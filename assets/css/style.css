@@ -1163,6 +1163,33 @@ section {
   margin-bottom: 20px;
 }
 
+/* Add this CSS to your existing stylesheet or create a new one */
+
+/* Center the Grievance Form button */
+.grievance-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Adjust the margin as needed */
+}
+
+/* Style the Grievance Form button */
+.grievance-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  background: #68A4C4;
+  color: #fff; /* Change the text color */
+  transition: background-color 0.3s ease;
+}
+
+.grievance-button:hover {
+  background: #8dbad2; /* Change the background color on hover */
+  color: white;
+}
+
+
 .service-details .card-title a {
   color: #1e4356;
   transition: 0.3s;
