@@ -676,42 +676,50 @@ section {
 }
 
 .download_report{
-  color: #1e4356;
-  background-color: rgb(228, 227, 227);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0);
   margin-bottom: 15px;
+  padding: 7px;
+  border-color: white;
+  font-size: 12px;
 }
-/* .button {
-  font-size: $font-size-base - .1rem;
+.button {
   font-weight: 600;
-  line-height: $line-height-base;
+  line-height: 1.6;
   display: inline-block;
-  width: 100%;
-  padding: ($spacer * 1.25) ($spacer * 2.25);
+  padding: (1rem * 1.25) (1rem * 2.25);
   cursor: pointer;
   user-select: none;
-  transition: $transition;
+  transition: all .3s ease-in-out;
   text-align: center;
   vertical-align: middle;
   white-space: nowrap;
   text-decoration: none;
   text-transform: uppercase;
-  color: $white;
-  border: 2px solid $white;
+  color: #fff;
+  border: 2px solid #fff;
   border-radius: 0;
   outline: none;
-  background-color: $primary;
+  background-color: #1e4356;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   &:hover {
-    color: $primary;
+    color: #1e4356;
   }
 
   &:focus {
     outline: none;
   }
-} */
+}
+
+.button--fade {
+  &:hover {
+    color: #1e4356;
+    background-color: #ffffff;
+  }
+}
 
 @media (max-width: 768px) {
   .breadcrumbs .d-flex {
