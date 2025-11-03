@@ -72,45 +72,85 @@
     </section><!-- End Contact Section -->
 
     <!-- ======= Contact Section ======= -->
-    <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+    <section class="contact py-5" data-aos="fade-up">
       <div class="container">
-    
-        <div class="row justify-content-center align-items-center">
-          <div class="col-lg-6">
-            <form method="post" action="" name="contact" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
+
+        <div class="section-title text-center mb-5">
+          <h2>Get In Touch</h2>
+          <p class="lead">We're here to help and answer your questions</p>
+        </div>
+
+        <!-- Quick Contact Info -->
+        <div class="row mb-5">
+          <div class="col-lg-6 mb-3 mb-lg-0" data-aos="flip-left" data-aos-duration="800">
+            <div class="d-flex align-items-center p-4 rounded bg-light border-start border-primary border-4">
+              <i class="bi bi-envelope-fill text-primary me-3" style="font-size: 2rem;"></i>
+              <div>
+                <h6 class="mb-1">Email</h6>
+                <a href="mailto:focus@kluniversity.in" class="text-decoration-none">focus@kluniversity.in</a>
               </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="phoneno" id="number" placeholder="Phone No" required>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <p id="waiting-message" style="display: none;">Please wait for a few seconds...</p>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+            </div>
           </div>
-    
-          <div class="col-lg-4 position-relative">
-            <img src="/assets/img/resolve.jpg" alt="Grievance Form Image" class="img-fluid" style="height: 100%;">
-            <div class="text-center mt-3">
-              <a href="https://bit.ly/FocusResolve" class="grievance-button" target="_blank">For Grievances Click Here</a>
+
+          <div class="col-lg-6" data-aos="flip-right" data-aos-duration="800" data-aos-delay="100">
+            <div class="d-flex align-items-center p-4 rounded bg-light border-start border-primary border-4">
+              <i class="bi bi-geo-alt-fill text-primary me-3" style="font-size: 2rem;"></i>
+              <div>
+                <h6 class="mb-1">Location</h6>
+                <p class="mb-0 small text-muted">KL University, Vijayawada</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="row justify-content-center align-items-center gap-4">
+          <div class="col-lg-5" data-aos="fade-right" data-aos-duration="1000">
+            <img src="assets/img/form.jpg" alt="Contact FOCUS" class="img-fluid rounded-3 shadow mb-3">
+            <a href="https://forms.office.com/r/3FeCs3PiEJ?origin=lprLink" class="btn btn-primary w-100 btn-lg rounded-2" target="_blank">
+              <i class="bi bi-box-arrow-up-right me-2"></i>Submit Grievance
+            </a>
+          </div>
+
+          <div class="col-lg-5" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="card border-0 shadow">
+              <div class="card-body p-5">
+                <h4 class="mb-4">Send us a Message</h4>
+                <form method="post" action="" name="contact" role="form" class="php-email-form">
+                  <div class="row">
+                    <div class="col-md-6 form-group mb-3">
+                      <input type="text" name="name" class="form-control rounded-2" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="col-md-6 form-group mb-3">
+                      <input type="email" class="form-control rounded-2" name="email" id="email" placeholder="Your Email" required>
+                    </div>
+                  </div>
+                  <div class="form-group mb-3">
+                    <input type="tel" class="form-control rounded-2" name="phoneno" id="number" placeholder="Phone Number" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <input type="text" class="form-control rounded-2" name="subject" id="subject" placeholder="Subject" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <textarea class="form-control rounded-2" name="message" id="message" rows="4" placeholder="Your Message" required></textarea>
+                  </div>
+                  <div class="my-3">
+                    <div class="alert alert-info border-0 d-none" id="waiting-message">
+                      <i class="bi bi-hourglass-split me-2"></i>Processing your request...
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-lg w-100 rounded-2">
+                    <i class="bi bi-send-fill me-2"></i>Send Message
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    
     
     
 
@@ -219,30 +259,48 @@
     const form = document.forms['contact'];
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxpXgCidhcqNYzqulVYeU05O7qYmgVDYSiTPrh8VWHIJvMMI8VoCpJlnuJGx8y4dCDY/exec';
 
+    // Add focus animations to form inputs
+    document.querySelectorAll('.form-control').forEach(input => {
+      input.addEventListener('focus', function() {
+        this.classList.add('border-primary', 'shadow-sm');
+      });
+      input.addEventListener('blur', function() {
+        if (!this.value) {
+          this.classList.remove('border-primary', 'shadow-sm');
+        }
+      });
+    });
+
     form.addEventListener('submit', e => {
       e.preventDefault();
-      showWaitingMessage(); // Show the waiting message
+      showWaitingMessage();
+      
       fetch(scriptURL, { method: 'POST', body: new FormData(form) })
         .then(response => {
-          alert("Thank you! Your form is submitted successfully.");
-          hideWaitingMessage(); // Hide the waiting message on success
+          alert("Thank you! Your message was sent successfully.");
+          hideWaitingMessage();
           form.reset();
+          
+          // Remove focus styles after reset
+          document.querySelectorAll('.form-control').forEach(input => {
+            input.classList.remove('border-primary', 'shadow-sm');
+          });
         })
         .catch(error => {
           console.error('Error!', error.message);
-          hideWaitingMessage(); // Hide the waiting message on error
-          form.reset();
+          alert("There was an error sending your message. Please try again.");
+          hideWaitingMessage();
         });
     });
 
     function showWaitingMessage() {
       const waitingMessage = document.getElementById("waiting-message");
-      waitingMessage.style.display = "block";
+      waitingMessage.classList.remove('d-none');
     }
 
     function hideWaitingMessage() {
       const waitingMessage = document.getElementById("waiting-message");
-      waitingMessage.style.display = "none";
+      waitingMessage.classList.add('d-none');
     }
   </script>
 
