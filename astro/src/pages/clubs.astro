@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Technology Clubs - FOCUS';
+---
+<BaseLayout {title}>
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <h1 class="text-3xl md:text-4xl font-black mb-8">Technology Clubs</h1>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {['GDSC','Mayavi','Sea','SODS','SOCC','Trailblazers','Garuda','Megha','RPA','WhiteHatHackers','Intel','Kognitiv','Aprameya','Broadband','DC'].map((club) => (
+        <div class="rounded-2xl p-6 bg-card border border-white/10 backdrop-blur hover:shadow-glow transition">
+          <h3 class="font-bold text-lg">{club}</h3>
+          <p class="text-white/70 text-sm mt-2">Explore activities, projects, and events hosted by {club}.</p>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

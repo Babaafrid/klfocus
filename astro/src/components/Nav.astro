@@ -1,0 +1,39 @@
+---
+const links = [
+  { href: '/klfocus/', label: 'Home' },
+  { href: '/klfocus/about', label: 'About' },
+  { href: '/klfocus/events', label: 'Events' },
+  { href: '/klfocus/clubs', label: 'Technology Clubs' },
+  { href: '/klfocus/team', label: 'Team' },
+  { href: '/klfocus/include', label: '#Include' },
+  { href: '/klfocus/contact', label: 'Contact Us' }
+];
+---
+<header class="fixed top-0 inset-x-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/5 border-b border-white/10">
+  <div class="mx-auto max-w-7xl px-4">
+    <nav class="flex h-16 items-center justify-between">
+      <a href="/klfocus/" class="flex items-center gap-2">
+        <img src="/klfocus/assets/img/logo.png" alt="FOCUS" class="h-8 w-8" />
+        <span class="font-bold tracking-wide">FOCUS</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-6 text-sm">
+        {links.map((l) => (
+          <li><a class="hover:text-accent transition-colors" href={l.href}>{l.label}</a></li>
+        ))}
+      </ul>
+      <button class="md:hidden" id="menuBtn" aria-label="Toggle Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+    <ul id="mobileMenu" class="md:hidden hidden pb-4 space-y-2">
+      {links.map((l) => (
+        <li><a class="block px-2 py-2 rounded hover:bg-white/10" href={l.href}>{l.label}</a></li>
+      ))}
+    </ul>
+  </div>
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+  </script>
+</header>

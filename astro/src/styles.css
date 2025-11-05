@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { scroll-behavior: smooth; }
+
+/***** Boxicons CDN *****/
+@layer base {
+  @font-face {
+    font-family: 'boxicons';
+    src: url('https://unpkg.com/boxicons@2.1.4/fonts/boxicons.woff2') format('woff2');
+    font-display: swap;
+  }
+}

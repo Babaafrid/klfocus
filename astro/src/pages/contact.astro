@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Contact - FOCUS';
+---
+<BaseLayout {title}>
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <h1 class="text-3xl md:text-4xl font-black mb-6">Contact Us</h1>
+    <p class="text-white/80 mb-6">For inquiries, reach us at <a href="mailto:focus@kluniversity.in" class="text-accent underline">focus@kluniversity.in</a>.</p>
+    <div class="rounded-2xl p-6 bg-card border border-white/10">
+      <form action="#" class="grid sm:grid-cols-2 gap-4">
+        <input class="bg-white/5 rounded px-4 py-3 outline-none border border-white/10 focus:border-accent" placeholder="Your Name" />
+        <input type="email" class="bg-white/5 rounded px-4 py-3 outline-none border border-white/10 focus:border-accent" placeholder="Email" />
+        <textarea class="sm:col-span-2 bg-white/5 rounded px-4 py-3 outline-none border border-white/10 focus:border-accent" placeholder="Message" rows="5" />
+        <button class="sm:col-span-2 px-6 py-3 rounded bg-gradient-to-r from-accent to-accent2 text-black font-semibold">Send</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

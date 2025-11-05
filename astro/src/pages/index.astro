@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero';
+import SectionCard from '../components/SectionCard';
+const title = 'Home - FOCUS | KL University';
+---
+<BaseLayout {title}>
+  <Hero client:load />
+
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <div class="grid md:grid-cols-2 gap-8">
+      <SectionCard title="Our Mission" img="/klfocus/assets/img/service-details-1.jpg" delay={0.1} client:visible>
+        Our mission is to unlock the hidden talents of students while building a close-knit community, fostering comprehensive personal growth, achieving academic excellence, enhancing communication and teamwork skills, and encouraging innovation.
+      </SectionCard>
+      <SectionCard title="Our Plan" img="/klfocus/assets/img/service-details-2.jpg" delay={0.2} client:visible>
+        Our plan is to identify and nurture individual talents, foster a strong sense of community through events and clubs, achieve academic excellence with comprehensive support, enhance communication and teamwork skills, and cultivate an innovative culture.
+      </SectionCard>
+    </div>
+  </section>
+
+  <section class="stats-section py-16 bg-gradient-to-r from-[#1e4356] to-[#68A4C4]">
+    <div class="mx-auto max-w-7xl px-6 grid md:grid-cols-4 gap-8">
+      <div class="text-center">
+        <div class="text-5xl font-extrabold">500+</div>
+        <div class="opacity-90">Active Members</div>
+      </div>
+      <div class="text-center">
+        <div class="text-5xl font-extrabold">50+</div>
+        <div class="opacity-90">Events Organized</div>
+      </div>
+      <div class="text-center">
+        <div class="text-5xl font-extrabold">10+</div>
+        <div class="opacity-90">Tech Clubs</div>
+      </div>
+      <div class="text-center">
+        <div class="text-5xl font-extrabold">100+</div>
+        <div class="opacity-90">Achievements</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section py-20">
+    <div class="mx-auto max-w-3xl px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Ready to Join the Community?</h2>
+      <p class="text-white/80 mb-8">Become a part of FOCUS and unlock your potential. Connect with like-minded individuals, participate in exciting events, and grow your skills in technology.</p>
+      <div class="flex items-center justify-center gap-4 flex-wrap">
+        <a href="/klfocus/about" class="px-6 py-3 rounded-full bg-gradient-to-r from-accent to-accent2 text-black font-semibold shadow-glow">Learn More</a>
+        <a href="/klfocus/contact" class="px-6 py-3 rounded-full border border-white/20 hover:bg-white/10 transition">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
