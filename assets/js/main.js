@@ -233,4 +233,229 @@
    */
   new PureCounter();
 
+  /**
+   * Theme: dark/light with persistence
+   */
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const savedTheme = localStorage.getItem('theme');
+  const initialTheme = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
+
+  const setTheme = (mode) => {
+    const body = document.body;
+    if (mode === 'dark') body.classList.add('theme-dark'); else body.classList.remove('theme-dark');
+    localStorage.setItem('theme', mode);
+    const btn = select('#themeToggle');
+    if (btn) {
+      const iconClass = mode === 'dark' ? 'bi-sun' : 'bi-moon-stars';
+      const oldIcon = btn.querySelector('.theme-toggle-icon');
+      if (oldIcon) {
+        oldIcon.className = `bi ${iconClass} theme-toggle-icon`;
+      }
+    }
+  };
+  setTheme(initialTheme);
+  on('click', '#themeToggle', () => {
+    const isDark = document.body.classList.contains('theme-dark');
+    setTheme(isDark ? 'light' : 'dark');
+  });
+
+  /**
+   * Home page animations (GSAP + ScrollTrigger + Sparkles + Lottie)
+   */
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const initGSAP = () => {
+    if (!window.gsap || reducedMotion) return;
+    const { gsap } = window;
+    if (window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+    // Hero intro
+    gsap.from('#hero h2', { y: 30, opacity: 0, duration: 0.9, ease: 'power3.out' });
+    gsap.from('#hero p', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out', delay: 0.2 });
+
+    // Floating orbs subtle motion
+    gsap.utils.toArray('.orb').forEach((el, i) => {
+      gsap.to(el, {
+        x: `random(-30, 30)`,
+        y: `random(-30, 30)`,
+        duration: gsap.utils.random(3, 6),
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true,
+        delay: i * 0.2
+      });
+    });
+
+    // Cards in: service-details
+    if (window.ScrollTrigger) {
+      gsap.utils.toArray('.service-details .card').forEach((card, i) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 40,
+          duration: 0.6,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: card, start: 'top 80%' }
+        });
+      });
+
+      // Stats icons pop
+      gsap.from('.stats-section .stat-item i', {
+        scale: 0,
+        opacity: 0,
+        duration: 0.6,
+        ease: 'back.out(1.7)',
+        stagger: 0.1,
+        scrollTrigger: { trigger: '.stats-section', start: 'top 80%' }
+      });
+    }
+  };
+
+  const initSparkles = () => {
+    if (reducedMotion) return;
+    const canvas = document.getElementById('sparkleCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let width, height, dpr;
+    const resize = () => {
+      dpr = window.devicePixelRatio || 1;
+      width = canvas.clientWidth || window.innerWidth;
+      height = canvas.clientHeight || window.innerHeight;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      ctx.scale(dpr, dpr);
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const COUNT = 110; // a bit heavy, but pretty
+    const particles = new Array(COUNT).fill(0).map(() => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.6,
+      vy: (Math.random() - 0.5) * 0.6,
+      r: Math.random() * 2 + 0.6,
+      hue: 190 + Math.random() * 60
+    }));
+
+    let mx = width / 2, my = height / 2; let hasMouse = false;
+    window.addEventListener('mousemove', (e) => { hasMouse = true; mx = e.clientX; my = e.clientY; });
+
+    const step = () => {
+      ctx.clearRect(0, 0, width, height);
+      ctx.globalCompositeOperation = 'lighter';
+      particles.forEach(p => {
+        // gentle attraction to mouse
+        if (hasMouse) {
+          const dx = mx - p.x, dy = my - p.y; const dist = Math.hypot(dx, dy) + 0.001;
+          const force = Math.min(0.08 / dist, 0.04);
+          p.vx += force * dx;
+          p.vy += force * dy;
+        }
+        p.x += p.vx; p.y += p.vy;
+        // bounds wrap
+        if (p.x < -5) p.x = width + 5; if (p.x > width + 5) p.x = -5;
+        if (p.y < -5) p.y = height + 5; if (p.y > height + 5) p.y = -5;
+        p.vx *= 0.98; p.vy *= 0.98;
+
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 12);
+        g.addColorStop(0, `hsla(${p.hue}, 95%, 70%, 0.9)`);
+        g.addColorStop(1, `hsla(${p.hue}, 95%, 50%, 0)`);
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 12, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      requestAnimationFrame(step);
+    };
+    step();
+  };
+
+  const initLottie = () => {
+    const el = select('#lottie-hero');
+    if (!el || !window.lottie || reducedMotion) return;
+    try {
+      const path = el.getAttribute('data-src') || 'assets/animations/hero.json';
+      window.lottie.loadAnimation({
+        container: el,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path
+      });
+      // If the file is missing, hide gracefully later
+      setTimeout(() => { if (!el.firstChild) el.style.display = 'none'; }, 4000);
+    } catch (e) { el.style.display = 'none'; }
+  };
+
+  // Initialize page-specific effects after load
+  window.addEventListener('load', () => {
+    initGSAP();
+    initSparkles();
+    initLottie();
+    initHeroTypewriter();
+  });
+
+  /**
+   * Typewriter effect for hero slide taglines (<p> inside each carousel-item)
+   */
+  const initHeroTypewriter = () => {
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const carousel = select('#heroCarousel');
+    if (!carousel) return;
+
+    const items = carousel.querySelectorAll('.carousel-item .carousel-container p');
+    if (!items.length) return;
+
+    // Save originals
+    items.forEach(p => {
+      if (!p.dataset.twOriginal) p.dataset.twOriginal = p.textContent.trim();
+    });
+
+    const timers = new Map();
+    const cancelTyping = (el) => {
+      const t = timers.get(el);
+      if (t) { clearTimeout(t); timers.delete(el); }
+      el.classList.remove('typewriter');
+    };
+    const type = (el, text, speed = 30) => {
+      el.textContent = '';
+      el.classList.add('typewriter');
+      let i = 0;
+      const tick = () => {
+        el.textContent = text.slice(0, i);
+        i++;
+        if (i <= text.length) {
+          const id = setTimeout(tick, speed);
+          timers.set(el, id);
+        } else {
+          el.classList.remove('typewriter');
+          el.dataset.twDone = '1'; // mark done so it won't retype on revisit
+        }
+      };
+      tick();
+    };
+
+    const typeActive = () => {
+      const activeItem = carousel.querySelector('.carousel-item.active .carousel-container p');
+      if (!activeItem) return;
+      if (reduced) return; // show static text, no typing
+      // If already typed once, keep it as-is
+      if (activeItem.dataset.twDone === '1') return;
+      // Start typing
+      type(activeItem, activeItem.dataset.twOriginal || activeItem.textContent.trim());
+    };
+
+    // Initial
+    typeActive();
+
+    // On slide
+    carousel.addEventListener('slide.bs.carousel', () => {
+      // Only cancel timers; do not clear text to avoid flicker
+      items.forEach(cancelTyping);
+    });
+    carousel.addEventListener('slid.bs.carousel', () => {
+      typeActive();
+    });
+  };
+
 })()

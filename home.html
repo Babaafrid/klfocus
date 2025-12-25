@@ -9,6 +9,17 @@
   <meta content="FOCUS is a vibrant community that fosters innovation and excellence in the CSE Department at KL University" name="description">
   <meta content="focus, kl university, cse, technology, innovation, community" name="keywords">
 
+  <!-- Early theme apply to prevent flash of wrong theme -->
+  <script>
+    (function(){
+      try {
+        var m = localStorage.getItem('theme');
+        if(!m && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ m='dark'; }
+        if(m === 'dark') { document.documentElement.classList.add('theme-dark'); }
+      } catch(e) {}
+    })();
+  </script>
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
 
@@ -26,6 +37,18 @@
 
   <!-- Modern Home Styles -->
   <style>
+    /* Disable template's default hero image overlay on this page */
+    #hero::after { display: none !important; }
+
+    /* Typewriter caret */
+    .typewriter {
+      border-right: 2px solid rgba(255,255,255,0.85);
+      white-space: nowrap;
+      overflow: hidden;
+      animation: caretBlink .8s steps(1) infinite;
+    }
+    @keyframes caretBlink { 50% { border-color: transparent; } }
+
     /* Enhanced Hero Section */
     #hero {
       width: 100%;
@@ -47,6 +70,48 @@
       background-position: bottom;
       opacity: 0.3;
     }
+
+    /* Dark mode overrides for hero */
+    .theme-dark #hero {
+      background: linear-gradient(135deg, #0b1720 0%, #0f2a3b 50%, #113a4f 100%);
+    }
+    .theme-dark #hero::before { opacity: 0.15; }
+
+    /* Lottie container */
+    .lottie-hero {
+      position: absolute;
+      right: 5%;
+      bottom: 8%;
+      width: min(42vw, 520px);
+      max-width: 90%;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.95;
+      mix-blend-mode: screen;
+    }
+
+    /* Floating orbs */
+    .hero-orbs {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .orb {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      filter: blur(24px);
+      opacity: 0.35;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.75), rgba(69,190,255,0.5), rgba(104,164,196,0.5) 70%, rgba(104,164,196,0.1) 100%);
+      mix-blend-mode: screen;
+    }
+    .orb.small { width: 120px; height: 120px; filter: blur(18px); }
+    .orb.o1 { top: 10%; left: 8%; }
+    .orb.o2 { top: 20%; right: 12%; }
+    .orb.o3 { bottom: 18%; left: 20%; }
+    .orb.o4 { bottom: 10%; right: 28%; }
 
     #hero .carousel-container {
       text-align: center;
@@ -106,6 +171,11 @@
       background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
     }
 
+    /* Dark mode section background */
+    .theme-dark .service-details {
+      background: linear-gradient(135deg, rgba(13,17,23,1) 0%, rgba(15,21,33,1) 100%);
+    }
+
     .service-details .card {
       border: none;
       border-radius: 15px;
@@ -114,6 +184,11 @@
       transition: all 0.4s ease;
       height: 100%;
       background: white;
+    }
+
+    .theme-dark .service-details .card {
+      background: var(--card-bg);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
     .service-details .card:hover {
@@ -166,6 +241,8 @@
       transition: color 0.3s ease;
     }
 
+    .theme-dark .service-details .card-title { color: var(--text); }
+
     .service-details .card-title a {
       text-decoration: none;
       color: inherit;
@@ -193,11 +270,17 @@
       line-height: 1.8;
     }
 
+    .theme-dark .service-details .card-text { color: var(--muted); }
+
     /* Stats Section */
     .stats-section {
       background: linear-gradient(135deg, #1e4356 0%, #68A4C4 100%);
       padding: 60px 0;
       color: white;
+    }
+
+    .theme-dark .stats-section {
+      background: linear-gradient(135deg, #0f2a3b 0%, #174a61 100%);
     }
 
     .stat-item {
@@ -228,6 +311,8 @@
       padding: 80px 0;
     }
 
+    .theme-dark .cta-section { background: var(--card-bg); }
+
     .cta-content {
       text-align: center;
       max-width: 800px;
@@ -241,11 +326,15 @@
       font-weight: 700;
     }
 
+    .theme-dark .cta-content h2 { color: var(--text); }
+
     .cta-content p {
       font-size: 1.2rem;
       color: #666;
       margin-bottom: 30px;
     }
+
+    .theme-dark .cta-content p { color: var(--muted); }
 
     .cta-buttons {
       display: flex;
@@ -287,6 +376,9 @@
       color: white;
       transform: translateY(-3px);
     }
+
+    /* Ensure theme toggle button stays legible atop hero */
+    .theme-dark .theme-toggle-btn { color: var(--text); border-color: rgba(255,255,255,0.15); }
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -348,6 +440,8 @@
 </head>
 
 <body>
+  <!-- Sparkles overlay (page-only) -->
+  <canvas id="sparkleCanvas" aria-hidden="true"></canvas>
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center header-transparent">
@@ -368,6 +462,12 @@
           <li><a href="team.html">Team</a></li>
           <li><a href="include.html">#Include</a></li>
           <li><a href="contact.html">Contact Us</a></li>
+          <li>
+            <button id="themeToggle" class="theme-toggle-btn ms-2" type="button" title="Toggle theme">
+              <i class="bi bi-moon-stars theme-toggle-icon"></i>
+              <span class="d-none d-md-inline">Theme</span>
+            </button>
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -379,6 +479,14 @@
   <section id="hero" class="d-flex justify-content-center align-items-center">
     <div id="heroCarousel" class="container carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
+      <!-- Decorative Orbs -->
+      <div class="hero-orbs" aria-hidden="true">
+        <div class="orb o1"></div>
+        <div class="orb o2 small"></div>
+        <div class="orb o3"></div>
+        <div class="orb o4 small"></div>
+      </div>
+
       <!-- Slide 1 -->
       <div class="carousel-item active">
         <div class="carousel-container">
@@ -386,6 +494,7 @@
             Welcome To <span><img src="assets/img/logo.png" alt="FOCUS" class="w-25"></span>
           </h2>
           <p class="animate__animated animate__fadeInUp">FOCUS is a vibrant community that fosters innovation and excellence in the CSE Department at KL University.</p>
+          <div id="lottie-hero" class="lottie-hero" role="img" aria-label="Decorative animation"></div>
         </div>
       </div>
 
@@ -557,6 +666,12 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Animation Libraries (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-g2E4E4m5Pp8wI2qzY1k8E3+S8bC7lIHg7e3b4m2r6QvTQmQ8D+3v4qQmW5wslc4O3X8w2Y0m4qVt5QW5zH1mHg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-sfQk+V6m5v7f7xj6P2m8yq6q6s0C6hD9IhQk0S2QZC0t3Q5lqvVt1ZgkJq7M6y1BvQH8mBzK2x+2mV3g7L5r2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" integrity="sha512-eQf1s6qQXc1Q2l5qC8b9sP9p9rGZb8H+o7q9H6dY7m9JvU0yYqkT0i0bV7mKpL8FJtJkGZg7l0bQx8xv2K1AqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" integrity="sha512-U6pI3w2pQm1Ywzjv0wq0M2Z3jz5K1WlV8gQf4g5qgV6Y6oXn8Dg1s9G2m2Qx2G8Cqf1wD3r6Y8p0ZVx3iZqO9A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>

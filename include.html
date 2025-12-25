@@ -21,6 +21,17 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+  <!-- Early theme apply to prevent flash of wrong theme -->
+  <script>
+    (function(){
+      try {
+        var m = localStorage.getItem('theme');
+        if(!m && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ m='dark'; }
+        if(m === 'dark') { document.documentElement.classList.add('theme-dark'); }
+      } catch(e) {}
+    })();
+  </script>
+
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
@@ -45,6 +56,12 @@
           <li><a href="team.html">Team</a></li>
           <li><a class="active" href="include.html">#Include</a></li>
           <li><a href="contact.html">Contact Us</a></li>
+          <li>
+            <button id="themeToggle" class="theme-toggle-btn ms-2" type="button" title="Toggle theme">
+              <i class="bi bi-moon-stars theme-toggle-icon"></i>
+              <span class="d-none d-md-inline">Theme</span>
+            </button>
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
