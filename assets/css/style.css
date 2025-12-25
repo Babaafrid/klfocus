@@ -904,6 +904,10 @@ section {
   color: #111;
 }
 
+/* Dark mode: fix low-contrast service card text */
+.theme-dark .services .title a { color: var(--text); }
+.theme-dark .services .description { color: var(--muted); }
+
 .services .description {
   font-size: 15px;
   line-height: 28px;
