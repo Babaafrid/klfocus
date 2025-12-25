@@ -398,6 +398,23 @@
     reveal('.contact .info-box');
   };
 
+  const initAboutAnimations = () => {
+    if (!window.gsap || reducedMotion) return;
+    if (!document.querySelector('section.about')) return;
+    const { gsap } = window;
+    // Float the hero image subtly
+    const img = document.querySelector('.about img.rounded.shadow-lg');
+    if (img) {
+      gsap.to(img, { y: 8, duration: 3, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+    }
+    // Stagger in checklist rows when visible
+    if (window.ScrollTrigger) {
+      gsap.utils.toArray('.about .d-flex.align-items-start').forEach((el, i) => {
+        gsap.from(el, { opacity:0, x:-20, duration:.5, ease:'power2.out', scrollTrigger:{ trigger: el, start:'top 85%' } });
+      });
+    }
+  };
+
   const initTilt = () => {
     if (reducedMotion) return;
     const els = select('.tilt', true);
@@ -572,6 +589,7 @@
     // Animations & effects
     initGSAP();      // home hero specifics
     initSiteWideGSAP(); // generic reveals
+    initAboutAnimations();
     initTilt();
     initMagnetic();
     initSparkles();
