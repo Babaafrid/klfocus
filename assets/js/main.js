@@ -241,8 +241,16 @@
   const initialTheme = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
 
   const setTheme = (mode) => {
+    const root = document.documentElement;
     const body = document.body;
-    if (mode === 'dark') body.classList.add('theme-dark'); else body.classList.remove('theme-dark');
+    // Always manage theme class on <html> only for consistency
+    if (mode === 'dark') {
+      root.classList.add('theme-dark');
+    } else {
+      root.classList.remove('theme-dark');
+    }
+    // Ensure body never keeps a stale class
+    body.classList.remove('theme-dark');
     localStorage.setItem('theme', mode);
     const btn = select('#themeToggle');
     if (btn) {
@@ -253,9 +261,17 @@
       }
     }
   };
+  // Migrate any legacy body-level theme class to the root
+  (function migrateThemeClass(){
+    const body = document.body; const root = document.documentElement;
+    if (body.classList.contains('theme-dark') && !root.classList.contains('theme-dark')) {
+      root.classList.add('theme-dark');
+    }
+    body.classList.remove('theme-dark');
+  })();
   setTheme(initialTheme);
   on('click', '#themeToggle', () => {
-    const isDark = document.body.classList.contains('theme-dark');
+    const isDark = document.documentElement.classList.contains('theme-dark');
     setTheme(isDark ? 'light' : 'dark');
   });
 
@@ -427,6 +443,44 @@
     });
   };
 
+  /**
+   * Clubs page: transform portfolio grid into circular club cards
+   * - Derives club name from the href filename (e.g., aprameya.html -> Aprameya)
+   * - Wraps images into a circular frame with animated electric border
+   */
+  const initClubCards = () => {
+    const grid = select('.portfolio');
+    if (!grid) return; // not on clubs page
+    const links = select('.portfolio .portfolio-item a[href$=".html"]', true);
+    if (!links || !links.length) return;
+
+    const ACR = { gdsc: 'GDSC', rpa: 'RPA', socc: 'SOCC', sods: 'SODS', sea: 'SEA', dc: 'DC', ai: 'AI' };
+    const titleCase = (s) => s.replace(/[-_]+/g, ' ').replace(/\s+/g, ' ').trim()
+      .split(' ').map(w => ACR[w.toLowerCase()] || (w.charAt(0).toUpperCase() + w.slice(1))).join(' ');
+
+    links.forEach(a => {
+      const item = a.closest('.portfolio-item');
+      if (!item || item.classList.contains('club-card')) return;
+      item.classList.add('club-card');
+      const href = (a.getAttribute('href') || '').split('/').pop();
+      const name = titleCase(href.replace(/\.html$/i, ''));
+
+      const img = a.querySelector('img');
+      if (!img) return;
+      img.classList.add('club-img');
+
+      const wrap = document.createElement('div');
+      wrap.className = 'club-img-wrap electric';
+      img.parentNode.insertBefore(wrap, img);
+      wrap.appendChild(img);
+
+      const caption = document.createElement('div');
+      caption.className = 'club-name';
+      caption.textContent = name;
+      a.appendChild(caption);
+    });
+  };
+
   const initSparkles = () => {
     if (reducedMotion) return;
     const canvas = document.getElementById('sparkleCanvas');
@@ -519,6 +573,7 @@
     initLottie();    // hero lottie hook
     initDataLotties(); // [data-lottie] anywhere
     initHeroTypewriter();
+    initClubCards(); // clubs grid transform
 
     // Safety fallback: if AOS didn't kick in, unhide AOS-marked elements
     setTimeout(() => {
