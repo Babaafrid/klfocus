@@ -473,28 +473,43 @@
   const initClubCards = () => {
     const grid = select('.portfolio');
     if (!grid) return; // not on clubs page
-    const links = select('.portfolio .portfolio-item a[href$=".html"]', true);
+    // Support pretty URLs ("/aprameya") and .html links
+    const links = select('.portfolio .portfolio-item a', true);
     if (!links || !links.length) return;
 
     const ACR = { gdsc: 'GDSC', rpa: 'RPA', socc: 'SOCC', sods: 'SODS', sea: 'SEA', dc: 'DC', ai: 'AI' };
     const titleCase = (s) => s.replace(/[-_]+/g, ' ').replace(/\s+/g, ' ').trim()
       .split(' ').map(w => ACR[w.toLowerCase()] || (w.charAt(0).toUpperCase() + w.slice(1))).join(' ');
+    const deriveName = (a) => {
+      const href = (a.getAttribute('href') || '').split('?')[0];
+      let slug = href.split('/').filter(Boolean).pop() || '';
+      slug = slug.replace(/\.html$/i, '').replace(/\/?$/, '');
+      if (!slug) {
+        const img = a.querySelector('img');
+        if (img) {
+          const src = (img.getAttribute('src') || '').split('?')[0];
+          slug = src.split('/').filter(Boolean).pop() || '';
+          slug = slug.replace(/\.[a-zA-Z0-9]+$/, '');
+        }
+      }
+      return titleCase(slug || 'Club');
+    };
 
     links.forEach(a => {
       const item = a.closest('.portfolio-item');
       if (!item || item.classList.contains('club-card')) return;
       item.classList.add('club-card');
-      const href = (a.getAttribute('href') || '').split('/').pop();
-      const name = titleCase(href.replace(/\.html$/i, ''));
 
+      const name = deriveName(a);
       const img = a.querySelector('img');
-      if (!img) return;
-      img.classList.add('club-img');
-
-      const wrap = document.createElement('div');
-      wrap.className = 'club-img-wrap electric';
-      img.parentNode.insertBefore(wrap, img);
-      wrap.appendChild(img);
+      if (img) {
+        img.classList.add('club-img');
+        // Wrap image for electric ring
+        const wrap = document.createElement('div');
+        wrap.className = 'club-img-wrap electric';
+        img.parentNode.insertBefore(wrap, img);
+        wrap.appendChild(img);
+      }
 
       const caption = document.createElement('div');
       caption.className = 'club-name';
