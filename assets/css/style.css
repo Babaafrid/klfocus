@@ -30,6 +30,15 @@
   --footer-bg: #0b212d;
   --link: #4fa6d5;
   --link-hover: #45beff;
+
+  /* Glassmorphism tokens */
+  --glass-bg: rgba(255, 255, 255, 0.68);
+  --glass-border: rgba(255, 255, 255, 0.34);
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+  --glass-blur: 14px;
+  /* Dark-tinted glass for sections that use white text (e.g., portfolio tiles) */
+  --glass-dark-bg: rgba(30, 67, 86, 0.72);
+  --glass-dark-border: rgba(255, 255, 255, 0.18);
 }
 
 .theme-dark {
@@ -46,6 +55,38 @@
   --footer-bg: #0b212d; /* keep footer tone */
   --link: #58a6ff;
   --link-hover: #7cc4ff;
+
+  /* Glassmorphism tokens */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  --glass-blur: 16px;
+  --glass-dark-bg: rgba(255, 255, 255, 0.06);
+  --glass-dark-border: rgba(255, 255, 255, 0.10);
+}
+
+/*--------------------------------------------------------------
+# Glassmorphism (reusable surface)
+--------------------------------------------------------------*/
+.glass-surface {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+}
+
+.glass-surface--dark {
+  background: var(--glass-dark-bg);
+  border: 1px solid var(--glass-dark-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-surface { background: var(--card-bg); border-color: var(--border); }
+  .glass-surface--dark { background: #1e4356; border-color: rgba(255,255,255,0.12); }
 }
 
 html { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -226,6 +267,9 @@ h3, h4, h5, h6 { font-weight: 600; }
   z-index: 997;
   transition: all 0.5s;
   background: var(--header-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 #header.header-transparent {
@@ -327,8 +371,11 @@ h3, h4, h5, h6 { font-weight: 600; }
   z-index: 99;
   opacity: 0;
   visibility: hidden;
-  background: #fff;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
   transition: 0.3s;
 }
 
@@ -870,14 +917,14 @@ section {
   position: relative;
   overflow: hidden;
   margin: 0 0 40px 0;
-  background: #fff;
-  box-shadow: 0 5px 26px 0 rgba(68, 88, 144, 0.14);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
   transition: all 0.3s ease-in-out;
   text-align: center;
-  border: 1px solid #fff;
 }
-
-.theme-dark .services .icon-box { background: var(--card-bg); border-color: var(--border); box-shadow: 0 5px 26px rgba(0,0,0,.25); }
 
 .services .icon {
   margin: 0 auto 20px auto;
@@ -1551,13 +1598,17 @@ section {
 }
 
 .portfolio .portfolio-item {
-  background: #1e4356;
+  background: var(--glass-dark-bg);
   overflow: hidden;
   min-height: 200px;
   position: relative;
   border-radius: 4px;
   margin: 0 0 30px 0;
   text-align: center;
+  border: 1px solid var(--glass-dark-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
 }
 
 .portfolio .portfolio-item img {
@@ -2694,4 +2745,22 @@ section {
 
 #footer .credits a {
   color: #a2cce3;
+}
+
+/* Team cards: glass surface */
+.team .member {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+}
+
+/* Contact info boxes: glass surface */
+.contact .info-box {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
 }
