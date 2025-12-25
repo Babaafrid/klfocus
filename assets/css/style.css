@@ -48,6 +48,64 @@ body {
   background: var(--bg);
 }
 
+/* Global animated gradient utilities */
+.gradient-animated {
+  position: relative;
+  overflow: hidden;
+}
+.gradient-animated::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, rgba(88,166,255,.15), rgba(69,190,255,.15), rgba(104,164,196,.15));
+  background-size: 200% 200%;
+  animation: gradientShift 12s ease-in-out infinite;
+  z-index: -1;
+}
+.theme-dark .gradient-animated::before {
+  background: linear-gradient(120deg, rgba(88,166,255,.20), rgba(69,190,255,.12), rgba(104,164,196,.18));
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glow card + animated border */
+.glow-card {
+  position: relative;
+  background: var(--card-bg);
+  z-index: 0; /* ensure a stacking context so ::after doesn't sink below ancestors */
+}
+.glow-card::after {
+  content: "";
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(from 0deg, var(--primary), var(--primary-2), var(--primary));
+  filter: blur(14px);
+  opacity: .25;
+  z-index: -1;
+  transition: opacity .3s ease, filter .3s ease;
+}
+.glow-card:hover::after { opacity: .55; filter: blur(18px); }
+
+/* Magnetic buttons base style keeps subtle glow */
+.magnetic { position: relative; will-change: transform; }
+.magnetic::before {
+  content: ""; position: absolute; inset: -2px; border-radius: inherit;
+  background: radial-gradient(ellipse at center, rgba(120,200,255,.35), rgba(120,200,255,0));
+  z-index: -1; opacity: .35; transition: opacity .25s ease;
+}
+.magnetic:hover::before { opacity: .7; }
+
+/* Shimmer text for major headings */
+.shimmer-text {
+  background: linear-gradient(90deg, rgba(255,255,255,.6), rgba(88,166,255,1), rgba(255,255,255,.6));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+@keyframes shimmer { 0%{background-position: 0 0;} 100%{background-position: 200% 0;} }
+
 a {
   color: var(--link);
   text-decoration: none;
@@ -665,6 +723,9 @@ section {
   left: calc(50% - 60px);
 }
 
+/* Dark mode: softer divider under section titles */
+.theme-dark .section-title h2::before { background: var(--border); }
+
 .section-title h2::after {
   content: "";
   position: absolute;
@@ -712,6 +773,20 @@ section {
   color: #6c757d;
   content: "/";
 }
+
+/* Dark mode: breadcrumbs/page header */
+.theme-dark .breadcrumbs {
+  background-color: var(--surface);
+  color: var(--muted);
+}
+.theme-dark .breadcrumbs h2 { color: var(--text); }
+.theme-dark .breadcrumbs ol li+li::before { color: var(--muted); }
+.theme-dark .breadcrumbs a { color: var(--link); }
+.theme-dark .breadcrumbs a:hover { color: var(--link-hover); }
+
+/* If we add gradient-animated to breadcrumbs, keep content above */
+.breadcrumbs.gradient-animated { position: relative; }
+.breadcrumbs.gradient-animated > * { position: relative; z-index: 1; }
 
 .download_report{
   color: #ffffff;
@@ -791,6 +866,8 @@ section {
   text-align: center;
   border: 1px solid #fff;
 }
+
+.theme-dark .services .icon-box { background: var(--card-bg); border-color: var(--border); box-shadow: 0 5px 26px rgba(0,0,0,.25); }
 
 .services .icon {
   margin: 0 auto 20px auto;
@@ -1582,6 +1659,7 @@ section {
   background: #fff;
   padding-bottom: 30px;
 }
+.theme-dark .team { background: transparent; }
 
 .team .member {
   margin-bottom: 20px;

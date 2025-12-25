@@ -310,6 +310,123 @@
     }
   };
 
+  /**
+   * Site-wide motion & micro-interactions
+   */
+  const loadScript = (src) => new Promise((resolve, reject) => {
+    if (document.querySelector(`script[src="${src}"]`)) return resolve();
+    const s = document.createElement('script'); s.src = src; s.async = true;
+    s.onload = resolve; s.onerror = reject; document.head.appendChild(s);
+  });
+
+  const ensureMotionLibs = async () => {
+    const tasks = [];
+    if (!window.gsap) tasks.push(loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'));
+    if (!window.ScrollTrigger) tasks.push(loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js'));
+    if (!window.ScrollToPlugin) tasks.push(loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js'));
+    if (!window.lottie) tasks.push(loadScript('https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js'));
+    if (tasks.length) await Promise.all(tasks);
+  };
+
+  const addGlobalStyleClasses = () => {
+    // Add glow/tilt to common card-like elements
+    const glowAndTilt = [
+      '.service-details .card', '.services .icon-box', '.pricing .box',
+      '.blog .entry', '.portfolio .portfolio-item',
+      '.contact .info-box', '.why-us .icon-box'
+    ];
+    glowAndTilt.forEach(sel => select(sel, true).forEach(el => {
+      el.classList.add('glow-card', 'tilt');
+    }));
+
+    // Team cards: glow only on card; tilt only the image container to avoid layout conflicts
+    select('.team .member', true).forEach(el => el.classList.add('glow-card'));
+    select('.team .member .member-img', true).forEach(el => el.classList.add('tilt'));
+
+    // Enhance breadcrumb/header bar with animated gradient
+    const bc = select('.breadcrumbs'); if (bc) bc.classList.add('gradient-animated');
+
+    // Subtle gradients to section backgrounds
+    select('section.section-bg', true).forEach(sec => sec.classList.add('gradient-animated'));
+
+    // Make CTA buttons a bit magnetic
+    select('.btn-get-started, .cta-btn, .button, .btn', true).forEach(btn => btn.classList.add('magnetic'));
+
+    // Section titles shimmer
+    select('.section-title h2', true).forEach(h => h.classList.add('shimmer-text'));
+  };
+
+  const initSiteWideGSAP = () => {
+    if (!window.gsap || reducedMotion) return;
+    const { gsap } = window; if (window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+
+    const reveal = (selector, from = { opacity: 0, y: 40 }) => {
+      if (!window.ScrollTrigger) return;
+      gsap.utils.toArray(selector).forEach((el) => {
+        gsap.from(el, { ...from, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
+      });
+    };
+
+    reveal('.section-title');
+    reveal('.services .icon-box');
+    reveal('.service-details .card');
+    reveal('.pricing .box');
+    reveal('.team .member');
+    reveal('.portfolio .portfolio-item');
+    reveal('.blog .entry');
+    reveal('.contact .info-box');
+  };
+
+  const initTilt = () => {
+    if (reducedMotion) return;
+    const els = select('.tilt', true);
+    const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+    els.forEach(el => {
+      const rect = () => el.getBoundingClientRect();
+      const max = 8; // deg
+      const onMove = (e) => {
+        const r = rect();
+        const px = (e.clientX - r.left) / r.width;
+        const py = (e.clientY - r.top) / r.height;
+        const rx = clamp((0.5 - py) * max * 2, -max, max);
+        const ry = clamp((px - 0.5) * max * 2, -max, max);
+        el.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
+      };
+      const onLeave = () => { el.style.transform = 'perspective(800px) rotateX(0) rotateY(0)'; };
+      el.addEventListener('mousemove', onMove);
+      el.addEventListener('mouseleave', onLeave);
+    });
+  };
+
+  const initMagnetic = () => {
+    if (reducedMotion) return;
+    select('.magnetic', true).forEach(btn => {
+      const strength = 20;
+      const onMove = (e) => {
+        const r = btn.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        btn.style.transform = `translate(${dx/strength}px, ${dy/strength}px)`;
+      };
+      const onLeave = () => { btn.style.transform = 'translate(0,0)'; };
+      btn.addEventListener('mousemove', onMove);
+      btn.addEventListener('mouseleave', onLeave);
+    });
+  };
+
+  const initDataLotties = () => {
+    if (!window.lottie || reducedMotion) return;
+    select('[data-lottie]', true).forEach(el => {
+      try {
+        window.lottie.loadAnimation({
+          container: el,
+          renderer: 'svg', loop: true, autoplay: true,
+          path: el.getAttribute('data-lottie')
+        });
+      } catch(e){ /* ignore */ }
+    });
+  };
+
   const initSparkles = () => {
     if (reducedMotion) return;
     const canvas = document.getElementById('sparkleCanvas');
@@ -388,11 +505,34 @@
   };
 
   // Initialize page-specific effects after load
-  window.addEventListener('load', () => {
-    initGSAP();
+  window.addEventListener('load', async () => {
+    // Ensure motion libraries exist everywhere
+    await ensureMotionLibs();
+    addGlobalStyleClasses();
+
+    // Animations & effects
+    initGSAP();      // home hero specifics
+    initSiteWideGSAP(); // generic reveals
+    initTilt();
+    initMagnetic();
     initSparkles();
-    initLottie();
+    initLottie();    // hero lottie hook
+    initDataLotties(); // [data-lottie] anywhere
     initHeroTypewriter();
+
+    // Safety fallback: if AOS didn't kick in, unhide AOS-marked elements
+    setTimeout(() => {
+      const aosEls = select('[data-aos]', true);
+      if (!aosEls || !aosEls.length) return;
+      // If many remain fully transparent, force show to avoid empty sections
+      const hiddenCount = aosEls.filter(el => {
+        const cs = window.getComputedStyle(el);
+        return cs && parseFloat(cs.opacity) === 0;
+      }).length;
+      if (hiddenCount > Math.max(2, aosEls.length * 0.5)) {
+        aosEls.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+      }
+    }, 800);
   });
 
   /**
