@@ -307,6 +307,15 @@ h3, h4, h5, h6 { font-weight: 600; }
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
+/* Mobile browsers can clip fixed children when an ancestor uses backdrop-filter.
+   Disable blur on small screens so the mobile menu can cover the full viewport. */
+@media (max-width: 991px) {
+  #header {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
 #header.header-transparent {
   background: none;
 }
@@ -493,6 +502,9 @@ h3, h4, h5, h6 { font-weight: 600; }
   right: 0;
   left: 0;
   bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
   background: rgba(17, 38, 48, 0.9);
   transition: 0.3s;
 }
