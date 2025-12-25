@@ -9,6 +9,10 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
 
@@ -24,16 +28,79 @@
     (function(){
       try {
         var m = localStorage.getItem('theme');
-        if(!m && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ m='dark'; }
         if(m === 'dark') { document.documentElement.classList.add('theme-dark'); }
       } catch(e) {}
     })();
   </script>
 
   <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- Clubs page critical styles (inline for deployment robustness) -->
+  <style>
+    /* Clubs circular cards */
+    .portfolio .portfolio-item.club-card {
+      background: transparent;
+      box-shadow: none;
+      min-height: auto;
+      padding: 16px 6px;
+    }
+    .portfolio .portfolio-item.club-card a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .club-img-wrap {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      position: relative;
+      z-index: 0;
+    }
+    .club-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+    }
+    .club-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      letter-spacing: .02em;
+      color: var(--text);
+    }
+    .theme-dark .club-name { color: var(--text); }
+
+    /* Electric animated ring around circular image */
+    .club-img-wrap.electric::before {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--primary), var(--primary-2), var(--primary));
+      filter: blur(8px);
+      opacity: .5;
+      z-index: 0;
+      animation: clubSpin 6s linear infinite;
+    }
+    .club-img-wrap.electric::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      padding: 2px;
+      background: linear-gradient(0deg, rgba(255,255,255,.8), rgba(255,255,255,.2));
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0);
+      mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0);
+      opacity: .35;
+    }
+    @keyframes clubSpin { to { transform: rotate(360deg); } }
+  </style>
 </head>
 
-<body>
+<body class="page-clubs">
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center ">

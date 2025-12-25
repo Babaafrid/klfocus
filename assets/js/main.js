@@ -472,7 +472,8 @@
    */
   const initClubCards = () => {
     // Only run on clubs page to avoid affecting other portfolios (e.g., #Include)
-    const isClubsPage = /(^|\/)clubs\.html(?:$|[?#])/.test(location.pathname) || document.body.classList.contains('page-clubs');
+    const pathname = (location.pathname || '').replace(/\/+$/, '');
+    const isClubsPage = pathname === '/clubs' || /(^|\/)clubs\.html(?:$|[?#])/.test(location.pathname) || document.body.classList.contains('page-clubs');
     if (!isClubsPage) return;
     const grid = select('.portfolio');
     if (!grid) return; // safety
