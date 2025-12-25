@@ -359,6 +359,11 @@
     select('.team .member', true).forEach(el => el.classList.add('glow-card'));
     select('.team .member .member-img', true).forEach(el => el.classList.add('tilt'));
 
+    // Club detail pages: elevate boxes and highlight slider
+    select('.portfolio-details .portfolio-info', true).forEach(el => el.classList.add('glass','glow-card'));
+    select('.portfolio-details .portfolio-description', true).forEach(el => el.classList.add('glass','glow-card'));
+    select('.portfolio-details .portfolio-details-slider', true).forEach(el => el.classList.add('neon-frame'));
+
     // Enhance breadcrumb/header bar with animated gradient
     const bc = select('.breadcrumbs'); if (bc) bc.classList.add('gradient-animated');
 
