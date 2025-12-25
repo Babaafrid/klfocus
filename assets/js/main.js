@@ -236,9 +236,9 @@
   /**
    * Theme: dark/light with persistence
    */
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   const savedTheme = localStorage.getItem('theme');
-  const initialTheme = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
+  // Default to LIGHT on first load. Only use dark if the user explicitly chose it before.
+  const initialTheme = (savedTheme === 'dark' || savedTheme === 'light') ? savedTheme : 'light';
 
   const setTheme = (mode) => {
     const root = document.documentElement;

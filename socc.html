@@ -28,7 +28,6 @@
     (function(){
       try {
         var m = localStorage.getItem('theme');
-        if(!m && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ m='dark'; }
         if(m === 'dark') { document.documentElement.classList.add('theme-dark'); }
       } catch(e) {}
     })();
