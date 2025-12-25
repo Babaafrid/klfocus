@@ -580,23 +580,28 @@
     } catch (e) { el.style.display = 'none'; }
   };
 
+  // Ensure club cards render regardless of external script load
+  document.addEventListener('DOMContentLoaded', () => { try { initClubCards(); } catch(e){} });
+
   // Initialize page-specific effects after load
   window.addEventListener('load', async () => {
-    // Ensure motion libraries exist everywhere
-    await ensureMotionLibs();
+    // Render clubs immediately as a priority
+    try { initClubCards(); } catch(e){}
+
+    // Ensure motion libraries exist everywhere, but don't block essentials
+    try { await ensureMotionLibs(); } catch(e) { /* continue without motion libs */ }
     addGlobalStyleClasses();
 
     // Animations & effects
-    initGSAP();      // home hero specifics
+    initGSAP();         // home hero specifics
     initSiteWideGSAP(); // generic reveals
     initAboutAnimations();
     initTilt();
     initMagnetic();
     initSparkles();
-    initLottie();    // hero lottie hook
-    initDataLotties(); // [data-lottie] anywhere
+    initLottie();       // hero lottie hook
+    initDataLotties();  // [data-lottie] anywhere
     initHeroTypewriter();
-    initClubCards(); // clubs grid transform
 
     // Safety fallback: if AOS didn't kick in, unhide AOS-marked elements
     setTimeout(() => {
