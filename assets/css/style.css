@@ -2521,6 +2521,33 @@ section {
 .theme-dark .theme-toggle-btn { border-color: rgba(255,255,255,0.15); color: var(--text); }
 .theme-toggle-icon { font-size: 16px; }
 
+/* Floating theme toggle (bottom-left to avoid back-to-top overlap) */
+.theme-toggle-fab {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 99998;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+}
+.theme-toggle-fab:hover { color: var(--link-hover); }
+.theme-toggle-fab:focus-visible {
+  outline: 2px solid var(--link-hover);
+  outline-offset: 2px;
+}
+.theme-toggle-fab .theme-toggle-icon { font-size: 18px; }
+
 /* Sparkle canvas overlay (only visible where used) */
 #sparkleCanvas {
   position: fixed;
