@@ -2471,6 +2471,11 @@ section {
 .theme-dark .blog .entry .entry-title a { color: var(--text); }
 .theme-dark .contact .info-box { color: var(--text); background: rgba(255,255,255,0.03); box-shadow: 0 0 30px rgba(0,0,0,0.35); }
 .theme-dark .contact .php-email-form { background: rgba(255,255,255,0.02); box-shadow: 0 0 30px rgba(0,0,0,0.35); }
+/* Improve readability of muted text in dark mode */
+.theme-dark .text-muted { color: var(--muted) !important; }
+
+/* Ensure muted copy in About -> who-panel stays readable */
+.about .who-panel .text-muted { color: var(--muted) !important; opacity: .95; }
 
 /* About page enhancements */
 .about { position: relative; overflow: hidden; }
@@ -2493,7 +2498,9 @@ section {
 .about .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.12); }
 .about .feature-card:hover::after { opacity: .45; filter: blur(22px); }
 .theme-dark .about .feature-card { background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); box-shadow: 0 10px 30px rgba(0,0,0,.45); }
-.about .feature-card .card-title { font-weight: 700; letter-spacing: .01em; }
+.about .feature-card .card-title { font-weight: 700; letter-spacing: .01em; color: var(--text); }
+.about .feature-card .card-text { color: var(--text); opacity: .95; }
+.theme-dark .about .feature-card .card-text { opacity: .98; }
 .about .feature-card i { text-shadow: 0 10px 25px rgba(0,0,0,.12); }
 
 .about img.rounded.shadow-lg { border-radius: 18px !important; box-shadow: 0 16px 40px rgba(0,0,0,.15) !important; }
