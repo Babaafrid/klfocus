@@ -5,14 +5,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Team - FOCUS | KL University</title>
-  <meta content="Meet the talented team behind FOCUS at KL University" name="description">
-  <meta content="team, leadership, focus, kl university" name="keywords">
+  <title>Clubs</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-  <!-- Google Fonts -->
+
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +19,6 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
   <!-- Early theme apply to prevent flash of wrong theme -->
   <script>
     (function(){
@@ -32,243 +30,7 @@
     })();
   </script>
 
-  <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- Modern Team Styles -->
-  <style>
-    /* Modern Team Section Enhancements */
-    .team {
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      padding: 60px 0;
-    }
-
-    .team-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .team-header h2 {
-      font-size: 2.5rem;
-      color: #1e4356;
-      font-weight: 700;
-      margin-bottom: 10px;
-      position: relative;
-      display: inline-block;
-    }
-
-    .team-header h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(90deg, #68A4C4, #45beff);
-      border-radius: 2px;
-    }
-
-    .team-header p {
-      color: #666;
-      font-size: 1.1rem;
-      margin-top: 20px;
-    }
-
-    .team .member {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.4s ease;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .team .member:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(104, 164, 196, 0.3);
-    }
-
-    .team .member .member-img {
-      position: relative;
-      overflow: hidden;
-      height: 280px;
-      background: linear-gradient(135deg, #68A4C4, #45beff);
-    }
-
-    .team .member .member-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-
-    .team .member:hover .member-img img {
-      transform: scale(1.1);
-    }
-
-    .team .member .member-img::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(104, 164, 196, 0.7), rgba(69, 190, 255, 0.7));
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .team .member:hover .member-img::after {
-      opacity: 0;
-    }
-
-    .team .member .social {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      height: 50px;
-      opacity: 0;
-      transition: all 0.4s ease;
-      text-align: center;
-      background: rgba(30, 67, 86, 0.95);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .team .member:hover .social {
-      opacity: 1;
-    }
-
-    .team .member .social a {
-      transition: all 0.3s ease;
-      color: #fff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .team .member .social a:hover {
-      background: #68A4C4;
-      transform: scale(1.15);
-    }
-
-    .team .member .social i {
-      font-size: 16px;
-    }
-
-    .team .member .member-info {
-      padding: 25px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .team .member .member-info h4 {
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: #1e4356;
-      margin: 0 0 8px 0;
-    }
-
-    .team .member .member-info span {
-      display: block;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      font-weight: 600;
-      letter-spacing: 1px;
-      background: linear-gradient(135deg, #68A4C4, #45beff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin: 0;
-    }
-
-    /* Section Titles */
-    .section-title {
-      width: 100%;
-      margin: 40px 0 30px 0;
-      text-align: center;
-    }
-
-    .section-title h2 {
-      font-size: 2rem;
-      color: #1e4356;
-      font-weight: 700;
-      margin-bottom: 15px;
-      position: relative;
-      display: inline-block;
-    }
-
-    .section-title h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50px;
-      height: 3px;
-      background: linear-gradient(90deg, #68A4C4, #45beff);
-      border-radius: 2px;
-    }
-
-    /* Empty State */
-    .member-placeholder .member-info h4 {
-      color: #ccc;
-      font-style: italic;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .team-header h2 {
-        font-size: 2rem;
-      }
-
-      .team .member .member-img {
-        height: 250px;
-      }
-
-      .team .member .member-info {
-        padding: 20px;
-      }
-
-      .section-title h2 {
-        font-size: 1.5rem;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .team {
-        padding: 40px 0;
-      }
-
-      .team-header h2 {
-        font-size: 1.5rem;
-      }
-
-      .team .member .member-img {
-        height: 200px;
-      }
-
-      .team .member .member-info h4 {
-        font-size: 1.1rem;
-      }
-
-      .section-title h2 {
-        font-size: 1.3rem;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -279,18 +41,18 @@
 
       <div class="logo">
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="home.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+        <a href='/home'><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="" href="home.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="clubs.html">Technology Clubs</a></li>
-          <li><a class="active" href="team.html">Team</a></li>
-          <li><a href="include.html">#Include</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
+          <li><a class href='/home'>Home</a></li>
+          <li><a href='/about'>About</a></li>
+          <li><a href='/events'>Events</a></li>
+          <li><a class='active' href='/clubs'>Technology Clubs</a></li>
+          <li><a href='/team'>Team</a></li>
+          <li><a href='/include'>#Include</a></li>
+          <li><a href='/contact'>Contact Us</a></li>
           <li>
             <button id="themeToggle" class="theme-toggle-btn ms-2" type="button" title="Toggle theme">
               <i class="bi bi-moon-stars theme-toggle-icon"></i>
@@ -306,417 +68,184 @@
 
   <main id="main">
 
-    <!-- ======= Our Team Section ======= -->
+    <!-- ======= Our Portfolio Section ======= -->
     <section class="breadcrumbs">
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Our Team</h2>
+          <h2>Technology Clubs</h2>
           <ol>
-            <li><a href="home.html">Home</a></li>
-            <li>Our Team</li>
+            <li><a href='/home'>Home</a></li>
+            <li>Technology Clubs</li>
           </ol>
         </div>
 
       </div>
-    </section><!-- End Our Team Section -->
+    </section><!-- End Our Portfolio Section -->
 
-    <!-- ======= Team Section ======= -->
-    <section class="team" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+    <!-- ======= Portfolio Section ======= -->
+    <section class="portfolio">
       <div class="container">
 
-        <div class="row g-4">
+        <div class="row">
+          <!-- <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-card">Card</li>
+              <li data-filter=".filter-web">Web</li>
+            </ul>
+          </div> -->
+        </div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img">
-                <img src="assets/img/Newteam/secretary.jpg" class="img-fluid" alt="Garikipati Rishitha">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Garikipati Rishitha</h4>
-                <span>President</span>
-              </div>
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-app">
+            <div class="portfolio-item">
+              <a href='/aprameya'><img src="assets/img/portfolio/aprameya.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="member" data-aos="fade-up" data-aos-delay="200">
-              <div class="member-img">
-                <img src="assets/img/team/vicepresident.jpg" class="img-fluid" alt="V Sumadhar">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>V Sumadhar</h4>
-                <span>Vice President</span>
-              </div>
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
+            <div class="portfolio-item">
+              <a href='/broadband'><img src="assets/img/portfolio/broadband.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="member member-placeholder" data-aos="fade-up" data-aos-delay="400">
-              <div class="member-img" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/team/aditya.jpg" class="img-fluid" alt="Aditya">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>V Aditya Varma</h4>
-                <span>Secretary</span>
-              </div>
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
+            <div class="portfolio-item">
+              <a href='/dc'><img src="assets/img/portfolio/dc.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="member member-placeholder" data-aos="fade-up" data-aos-delay="300">
-              <div class="member-img" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/team/treasurer.jpg" class="img-fluid" alt="V Sumadhar">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>P Ankita</h4>
-                <span>Treasurer</span>
-              </div>
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
+            <div class="portfolio-item">
+              <a href='/expedite'><img src="assets/img/portfolio/expedite.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
-          
-
-          <!-- ADVISORS SECTION -->
-          <div class="col-12">
-            <div class="section-title">
-              <h2>Advisors</h2>
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
+            <div class="portfolio-item">
+              <a href='/garuda'><img src="assets/img/portfolio/garuda.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="member member-placeholder" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/team/teja.jpg" class="img-fluid" alt="Gandu chakravarthy srinivas">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Sadhu Teja Sai</h4>
-                <span>Academics & Skill Development</span>
-              </div>
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
+            <div class="portfolio-item">
+              <a href='/gdsc'><img src="assets/img/portfolio/gdg.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img">
-                <img src="assets/img/team/bhanu.png" class="img-fluid" alt="Bhanuprakash Peddi">
-                <div class="social">
-                  <a href="https://www.linkedin.com/in/bhanu-prakash-peddi/"><i class="bi bi-linkedin"></i></a>
-                  <a href="mailto:bhanuprakashpeddi5@gmail.com"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Bhanuprakash Peddi</h4>
-                <span>Resolvance</span>
-              </div>
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
+            <div class="portfolio-item">
+              <a href='/intel'><img src="assets/img/portfolio/intel.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="member" data-aos="fade-up" data-aos-delay="300">
-              <div class="member-img">
-                <img src="assets/img/team/yagneswar.png" class="img-fluid" alt="Chinni KNS Yagneshwar">
-                <div class="social">
-                  <a href="https://www.linkedin.com/in/yagneshwarchinni/"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Chinni KNS Yagneshwar</h4>
-                <span>Events & Extension Activities</span>
-              </div>
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
+            <div class="portfolio-item">
+              <a href='/kognitiv'><img src="assets/img/portfolio/kognitiv.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
-          
-
-          
-
-          <div class="col-lg-3 col-md-6">
-            <div class="member member-placeholder" data-aos="fade-up" data-aos-delay="400">
-              <div class="member-img" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/team/provision_advisor.jpg" class="img-fluid" alt="Sasidhar">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>S Sasidhar</h4>
-                <span>Provision</span>
-              </div>
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
+            <div class="portfolio-item">
+              <a href='/mayavi'><img src="assets/img/portfolio/mayavi.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="member" data-aos="fade-up" data-aos-delay="200">
-              <div class="member-img">
-                <img src="assets/img/Newteam/alumnidir.jpg" class="img-fluid" alt="Gandu chakravarthy srinivas">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Gandu Chakravarthy Srinivas</h4>
-                <span>Alumni & IRP</span>
-              </div>
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
+            <div class="portfolio-item">
+              <a href='/megha'><img src="assets/img/portfolio/megha.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="member" data-aos="fade-up" data-aos-delay="200">
-              <div class="member-img">
-                <img src="assets/img/Newteam/strategydir.jpg" class="img-fluid" alt="A Raghu Sree Nandan">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>A Raghu Sree Nandan</h4>
-                <span>Strategy</span>
-              </div>
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
+            <div class="portfolio-item">
+              <a href='/rpa'><img src="assets/img/portfolio/rpa.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="member" data-aos="fade-up" data-aos-delay="300">
-              <div class="member-img">
-                <img src="assets/img/team/rohit.png" class="img-fluid" alt="Rohit">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Rohit</h4>
-                <span>Tech and Society</span>
-              </div>
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
+            <div class="portfolio-item">
+              <a href='/sea'><img src="assets/img/portfolio/sea.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="member" data-aos="fade-up" data-aos-delay="400">
-              <div class="member-img">
-                <img src="assets/img/Newteam/voicedir.jpeg" class="img-fluid" alt="Indukuri Aashritha">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Indukuri Aashritha</h4>
-                <span>Voice</span>
-              </div>
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
+            <div class="portfolio-item">
+              <a href='/socc'><img src="assets/img/portfolio/socc.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
-          <!-- DIRECTORS SECTION -->
-          <div class="col-12">
-            <div class="section-title">
-              <h2>Directors</h2>
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
+            <div class="portfolio-item">
+              <a href='/sods'><img src="assets/img/portfolio/sods.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="member member-placeholder" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/team/acad_director.jpg" class="img-fluid" alt="Gnanambhika">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>V Gnanambhika</h4>
-                <span>Academics & Skill Development</span>
-              </div>
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
+            <div class="portfolio-item">
+              <a href='/trailblazers'><img src="assets/img/portfolio/Trialblazers.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="member member-placeholder" data-aos="fade-up" data-aos-delay="200">
-              <div class="member-img" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/team/shanmukh.jpg" class="img-fluid" alt="P Shanmukha sri sai">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>P Shanmukha sri sai</h4>
-                  <span>Alumni & IRP</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="member member-placeholder" data-aos="fade-up" data-aos-delay="300">
-              <div class="member-img" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/team/events director.png" class="img-fluid" alt="Bindu Harika">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Bindu Harika</h4>
-                <span>Events & Extension Activities</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="member member-placeholder" data-aos="fade-up" data-aos-delay="400">
-              <div class="member-img" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/team/provision director.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Y Prudhvi Ram Chandra</h4>
-                <span>Provision</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="member member-placeholder" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/team/chandu.jpg" class="img-fluid" alt="P Sai Chandra Sekhar">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>P Sai Chandra Sekhar</h4>
-                <span>Resolvance</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="member member-placeholder" data-aos="fade-up" data-aos-delay="200">
-              <div class="member-img" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/team/strategic director.jpg" class="img-fluid" alt="Sohan Sri Sai Nandan">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Sohan Sri Sai Nandan</h4>
-                <span>Strategy</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="member member-placeholder" data-aos="fade-up" data-aos-delay="300">
-              <div class="member-img" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/team/tech director.jpg" class="img-fluid" alt="V Ramanjan">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>V Ramanjan</h4>
-                <span>Tech and Society</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="member member-placeholder" data-aos="fade-up" data-aos-delay="400">
-              <div class="member-img" style="background: #e9ecef; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/team/voice director.png" class="img-fluid" alt="M Sai Varma">
-                <div class="social">
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                  <a href="#"><i class="bi bi-envelope"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>M Sai Varma</h4>
-                <span>Voice</span>
-              </div>
+          <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
+            <div class="portfolio-item">
+              <a href='/whitehathackers'><img src="assets/img/portfolio/whitehat.jpg" class="img-fluid" alt=""></a>
             </div>
           </div>
 
         </div>
 
       </div>
-    </section><!-- End Team Section -->
+    </section><!-- End Portfolio Section -->
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="home.html">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="about.html">About</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="events.html">Events</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="clubs.html">Technology Clubs</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="team.html">Team</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="include.html">#Include</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="contact.html">Contact Us</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-contact">
-            <h4>Contact Us</h4>
-            <p>
-              KL University, <br>
-              Vijayawada, 522302<br>
-              India <br><br>
-              <strong>Email:</strong> focus@kluniversity.in<br>
-            </p>
-
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-info">
-            <h3>About FOCUS</h3>
-            <p>FOCUS is a platform for university CSE students to address grievances and promote academic growth. It aims to empower students with skills necessary for the evolving global tech landscape, fostering teamwork and knowledge exchange.</p>
-            <div class="social-links mt-3">
-              <a href="https://www.instagram.com/kl_focus/" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
-              <a href="https://www.linkedin.com/company/klfocus/mycompany/" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
+    <!-- ======= Footer ======= -->
+    <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+  
+            <div class="col-lg-4 col-md-6 footer-links">
+              <h4>Useful Links</h4>
+              <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href='/home'>Home</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href='/about'>About</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href='/events'>Events</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href='/clubs'>Technology Clubs</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href='/team'>Team</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href='/include'>#Include</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href='/contact'>Contact Us</a></li>
+              </ul>
             </div>
+  
+            <div class="col-lg-4 col-md-6 footer-contact">
+              <h4>Contact Us</h4>
+              <p>
+                KL University, <br>
+                Vijayawada, 522302<br>
+                India <br><br>
+                <strong>Email:</strong> focus@kluniversity.in<br>
+              </p>
+  
+            </div>
+  
+            <div class="col-lg-4 col-md-6 footer-info">
+              <h3>About FOCUS</h3>
+              <p>FOCUS is a platform for university CSE students to address grievances and promote academic growth. It aims to empower students with skills necessary for the evolving global tech landscape, fostering teamwork and knowledge exchange.</p>
+              <div class="social-links mt-3">
+                <a href="https://www.instagram.com/kl_focus/" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/klfocus/mycompany/" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+  
           </div>
-
         </div>
       </div>
-    </div>
-  </footer><!-- End Footer -->
+    </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
