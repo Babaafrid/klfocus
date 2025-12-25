@@ -99,6 +99,22 @@ body {
   background: var(--bg);
 }
 
+/*--------------------------------------------------------------
+# Responsive baseline
+--------------------------------------------------------------*/
+/* Prevent occasional horizontal scroll on small screens caused by shadows/absolute ornaments */
+html, body { max-width: 100%; overflow-x: hidden; }
+
+/* Fluid media by default */
+img, svg, video, canvas { max-width: 100%; height: auto; }
+iframe { max-width: 100%; }
+
+/* Long strings/URLs shouldn't blow up layout */
+p, a, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-break: normal; }
+
+/* Code blocks shouldn't overflow the viewport */
+pre { max-width: 100%; overflow-x: auto; }
+
 /* Global animated gradient utilities */
 .gradient-animated {
   position: relative;
@@ -195,10 +211,14 @@ h3, h4, h5, h6 { font-weight: 600; }
 /* flip card */
 .flip-card {
   background-color: transparent;
-  width: 350px;
-  height: 450px;
+  width: min(350px, 100%);
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 350 / 450;
   perspective: 1000px;
   font-family: sans-serif;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .title {
@@ -241,6 +261,21 @@ h3, h4, h5, h6 { font-weight: 600; }
 }
 
 /* flip card */
+
+@media (max-width: 575px) {
+  /* Slightly tighter spacing for small phones */
+  .about .who-panel { padding: 18px; }
+
+  /* Reduce circular club images so they fit comfortably */
+  .club-img-wrap { width: 132px; height: 132px; }
+
+  /* Event thumbnails: reduce fixed height to avoid overly tall cards */
+  .page-events .portfolio .portfolio-item img { height: 160px; }
+}
+
+@media (max-width: 420px) {
+  .club-img-wrap { width: 116px; height: 116px; }
+}
 
 .back-to-top i {
   font-size: 24px;
