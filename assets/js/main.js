@@ -471,8 +471,11 @@
    * - Wraps images into a circular frame with animated electric border
    */
   const initClubCards = () => {
+    // Only run on clubs page to avoid affecting other portfolios (e.g., #Include)
+    const isClubsPage = /(^|\/)clubs\.html(?:$|[?#])/.test(location.pathname) || document.body.classList.contains('page-clubs');
+    if (!isClubsPage) return;
     const grid = select('.portfolio');
-    if (!grid) return; // not on clubs page
+    if (!grid) return; // safety
     // Support pretty URLs ("/aprameya") and .html links
     const links = select('.portfolio .portfolio-item a', true);
     if (!links || !links.length) return;

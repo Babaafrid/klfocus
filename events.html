@@ -104,8 +104,8 @@
             <div class="portfolio-item">
               <img src="assets/img/aventing.jpg" class="img-fluid" alt="">
               <p class="mt-2" style="color: white;">Event Name: Aventing</p>
-              <a href="https://kluniversityin-my.sharepoint.com/:b:/g/personal/focus_kluniversity_in/EV5d1SmC7IlGjwoctfJHAPoBkwLvichwNZJTZkg2_SlZ2w?e=43Q5YB"
-                target="_blank"><button class="button button--fade download_report">View Report</button></a>
+              <a href="https://kluniversityin-my.sharepoint.com/:b:/g/personal/focus_kluniversity_in/
+                target="blank"><button class="button button--fade download_report">View Report</button></a>
             </div>
           </div>
         </div>
@@ -131,7 +131,7 @@
             <div class="portfolio-item">
               <img src="assets/img/learnathon23-24.jpg" class="img-fluid" alt="">
               <p class="mt-2" style="color: white;">Event Name: Y21 Y22 SDP Learnathon</p>
-              <a href="https://kluniversityin-my.sharepoint.com/:b:/g/personal/focus_kluniversity_in/EczVJ27qQORLnbC7FtbrPlcBZV5dvLC-lwL-Is2vOhQpQQ?e=L5yqnS"
+              <a href="https://kluniversityin-my.sharepoint.com/:b:/g/personal/focus_kluniversity_in/"
                 target="_blank"><button class="button button--fade download_report">View Report</button></a>
             </div>
           </div>
@@ -172,7 +172,7 @@
             <div class="portfolio-item">
               <img src="assets/img/onam.jpg" class="img-fluid" alt="">
               <p class="mt-2" style="color: white;">Event Name: Onam Celebrations</p>
-              <a href="https://kluniversityin-my.sharepoint.com/:b:/g/personal/focus_kluniversity_in/EadkqTjlYgRDkc3GseCv1KwBFJXQn25GAVlBmrc6L4kG0Q?e=KNbfaK"
+              <a href="https://kluniversityin-my.sharepoint.com/:b:/g/personal/focus_kluniversity_in"
                 target="_blank"><button class="button button--fade download_report">View Report</button></a>
             </div>
           </div>
@@ -323,7 +323,7 @@
             <div class="portfolio-item">
               <img src="assets/img/salesforce.jpg" class="img-fluid" alt="">
               <p class="mt-2" style="color: white;">Event Name: Mastering Salesforce & Trailhead</p>
-              <a href="https://kluniversityin-my.sharepoint.com/:w:/g/personal/focus_kluniversity_in/EWyBJusabAVLumAbTJxkqJ0B6zqdjMFpLfDpsKXiflHLeA?e=tNPz9n\"
+              <a href="https://kluniversityin-my.sharepoint.com/:w:/g/personal/focus_kluniversity_in/EWyBJusabAVLumAbTJxkqJ0B6zqdjMFpLfDpsKXiflHLeA?e=tNPz9n"
                 target="_blank"><button class="button button--fade download_report">View Report</button></a>
             </div>
           </div>
@@ -648,6 +648,30 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Remove unwanted report buttons/links (edit placeholders, # links) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      try {
+        // Remove placeholder and edit links
+        var toRemove = document.querySelectorAll(
+          'a[href="#"], a[href*="docs.google.com/document"][href*="/edit"]'
+        );
+        toRemove.forEach(function(a){ a.remove(); });
+
+        // Strip stray token-like text nodes (long alphanumeric blobs) from cards
+        var tokenRegex = /^[A-Za-z0-9_-]{10,}$/; // e.g., SharePoint/GDocs tokens
+        document.querySelectorAll('.portfolio-item, .portfolio-item a').forEach(function(el){
+          Array.from(el.childNodes).forEach(function(n){
+            if (n.nodeType === Node.TEXT_NODE) {
+              var t = (n.textContent || '').trim();
+              if (t && tokenRegex.test(t)) { n.remove(); }
+            }
+          });
+        });
+      } catch(e) { /* no-op */ }
+    });
+  </script>
 
 </body>
 
