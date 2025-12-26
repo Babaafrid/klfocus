@@ -55,6 +55,19 @@
       width: auto;
     }
 
+    /* Ensure transparent/dark logos remain visible in dark mode */
+    .kltalks-logo-surface {
+      background: rgba(255, 255, 255, 0.92);
+      padding: 14px 16px;
+      border-radius: 18px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+      display: inline-block;
+    }
+    .theme-dark .kltalks-logo-surface {
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+    }
+
     .kltalks-float {
       animation: kltalksFloat 4s ease-in-out infinite;
     }
@@ -73,6 +86,42 @@
       .kltalks-float {
         animation: none;
       }
+    }
+
+    /* Chapter-1: larger padding + glass look (scoped to this page) */
+    .talks-chapter .icon-box {
+      padding: 36px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+      border-radius: 16px;
+    }
+    .talks-chapter .icon-box > i {
+      font-size: 28px;
+      color: #68A4C4;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .talks-chapter .card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .talks-chapter .card .card-body {
+      padding: 28px;
+    }
+
+    .theme-dark .talks-chapter .card-body,
+    .theme-dark .talks-chapter .card-body .card-title,
+    .theme-dark .talks-chapter .card-body .card-text,
+    .theme-dark .talks-chapter .card-body p {
+      color: var(--text) !important;
     }
   </style>
 </head>
@@ -114,7 +163,7 @@
             <div class="d-flex flex-column align-items-center">
               <img
                 src="assets/img/TALKS/v2grw.png"
-                class="kltalks-hero-logo kltalks-float animate__animated animate__zoomIn"
+                class="kltalks-hero-logo kltalks-logo-surface kltalks-float animate__animated animate__zoomIn"
                 alt="KL Talks"
               >
 
@@ -205,8 +254,8 @@
           </div>
 
           <div class="col-lg-5">
-            <a href="assets/img/TALKS/DSC03247.jpg" class="portfolio-lightbox" data-gallery="talksIntro">
-              <img src="assets/img/TALKS/DSC03247.jpg" class="img-fluid rounded" alt="Focus Talks">
+            <a href="assets/img/TALKS/v2grw.png" class="portfolio-lightbox" data-gallery="talksIntro">
+              <img src="assets/img/TALKS/v2grw.png" class="img-fluid rounded kltalks-logo-surface" alt="KL Talks Logo">
             </a>
           </div>
         </div>
@@ -214,7 +263,7 @@
     </section><!-- End Focus Talks Intro -->
 
     <!-- ======= Chapter -1 ======= -->
-    <section class="features">
+    <section class="features talks-chapter">
       <div class="container">
         <div class="section-title">
           <h2>Chapter -1</h2>
