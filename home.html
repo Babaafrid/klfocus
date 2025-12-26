@@ -43,14 +43,21 @@
     /* Disable template's default hero image overlay on this page */
     #hero::after { display: none !important; }
 
-    /* Typewriter caret */
+    /* Typewriter (multi-line safe) */
     .typewriter {
-      border-right: 2px solid rgba(255,255,255,0.85);
-      white-space: nowrap;
-      overflow: hidden;
-      animation: caretBlink .8s steps(1) infinite;
+      white-space: normal;
+      overflow: visible;
+      display: inline;
     }
-    @keyframes caretBlink { 50% { border-color: transparent; } }
+    .typewriter::after {
+      content: '|';
+      display: inline-block;
+      margin-left: 2px;
+      color: rgba(255,255,255,0.85);
+      animation: caretBlink .8s steps(1) infinite;
+      transform: translateY(-1px);
+    }
+    @keyframes caretBlink { 50% { opacity: 0; } }
 
     /* Enhanced Hero Section */
     #hero {
@@ -101,6 +108,18 @@
       }
 
       /* Hero inline logo after “Welcome To” */
+      #hero h2 {
+        gap: 10px;
+      }
+
+      /* Push the logo onto its own line and center it */
+      #hero h2 > span {
+        flex: 0 0 100%;
+        display: flex;
+        justify-content: center;
+        line-height: 1;
+      }
+
       #hero h2 span img {
         width: auto !important; /* override Bootstrap .w-25 */
         max-width: none !important;
