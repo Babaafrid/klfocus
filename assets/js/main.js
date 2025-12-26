@@ -279,6 +279,11 @@
    * Home page animations (GSAP + ScrollTrigger + Sparkles + Lottie)
    */
   const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobileOrTablet = () => {
+    if (!window.matchMedia) return false;
+    // Treat <=1024px as mobile/tablet; keep effects for larger screens.
+    return window.matchMedia('(max-width: 1024px)').matches;
+  };
 
   const initGSAP = () => {
     if (!window.gsap || reducedMotion) return;
@@ -340,7 +345,10 @@
     if (!window.gsap) tasks.push(loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'));
     if (!window.ScrollTrigger) tasks.push(loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js'));
     if (!window.ScrollToPlugin) tasks.push(loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js'));
-    if (!window.lottie) tasks.push(loadScript('https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js'));
+    // Only load lottie-web when it's actually needed (desktop only for this site).
+    if (!isMobileOrTablet() && !window.lottie && document.querySelector('#lottie-hero, [data-lottie]')) {
+      tasks.push(loadScript('https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js'));
+    }
     if (tasks.length) await Promise.all(tasks);
   };
 
@@ -523,7 +531,7 @@
   };
 
   const initSparkles = () => {
-    if (reducedMotion) return;
+    if (reducedMotion || isMobileOrTablet()) return;
     const canvas = document.getElementById('sparkleCanvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -584,7 +592,7 @@
 
   const initLottie = () => {
     const el = select('#lottie-hero');
-    if (!el || !window.lottie || reducedMotion) return;
+    if (!el || !window.lottie || reducedMotion || isMobileOrTablet()) return;
     try {
       const path = el.getAttribute('data-src') || 'assets/animations/hero.json';
       window.lottie.loadAnimation({

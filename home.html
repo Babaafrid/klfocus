@@ -93,6 +93,22 @@
       mix-blend-mode: screen;
     }
 
+    /* Remove cursor-like decorative effects on mobile/tablet */
+    @media (max-width: 1024px) {
+      .lottie-hero,
+      #sparkleCanvas {
+        display: none !important;
+      }
+
+      /* Hero inline logo after “Welcome To” */
+      #hero h2 span img {
+        width: auto !important; /* override Bootstrap .w-25 */
+        max-width: none !important;
+        height: clamp(72px, 14vw, 128px);
+        vertical-align: middle;
+      }
+    }
+
     /* Floating orbs */
     .hero-orbs {
       position: absolute;
