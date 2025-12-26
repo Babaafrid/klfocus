@@ -37,6 +37,44 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    /* Talks page hero tweaks (uses existing template colors/styles) */
+    #hero-no-slider {
+      height: 70vh;
+      min-height: 520px;
+    }
+
+    #hero-no-slider::before {
+      background: linear-gradient(to right, rgba(30, 67, 86, 0.8), rgba(30, 67, 86, 0.6)), url("assets/img/hero.jpg") center top no-repeat;
+      background-size: cover;
+    }
+
+    .kltalks-hero-logo {
+      max-height: 160px;
+      width: auto;
+    }
+
+    .kltalks-float {
+      animation: kltalksFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes kltalksFloat {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .kltalks-float {
+        animation: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -68,6 +106,29 @@
 
   <main id="main">
 
+    <!-- ======= Hero (Animated) ======= -- >
+    <section id="hero-no-slider" class="d-flex justify-content-center align-items-center">
+      <div class="container position-relative" style="z-index: 2;">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="d-flex flex-column align-items-center">
+              <img
+                src="assets/img/kltalks-logo.png"
+                class="kltalks-hero-logo kltalks-float animate__animated animate__zoomIn"
+                alt="KL Talks"
+              >
+
+              <h2 class="mt-4 animate__animated animate__fadeInDown">KL Talks</h2>
+              <p class="mt-2 animate__animated animate__fadeInUp">
+                Focus Talks is a curated speaker series where accomplished individuals share their life journeys,
+                challenges, failures, breakthroughs, and lessons learned.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Hero -->
+
     <!-- ======= Breadcrumbs ======= -->
     <section class="breadcrumbs">
       <div class="container">
@@ -81,15 +142,124 @@
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Talks Section ======= -->
+    <!-- ======= Focus Talks Intro ======= -->
     <section class="services">
-      <div class="container">
-        <div class="section-title" data-aos="fade-up">
-          <h2>Talks & Speaker Sessions</h2>
-          <p>Updates will be posted here soon.</p>
+      <div class="container" data-aos="fade-up">
+        <div class="row align-items-center gy-4">
+          <div class="col-lg-12">
+            <div class="section-title text-start p-0" data-aos="fade-up">
+              <h2>About Focus Talks</h2>
+              <p>
+                <strong>Focus Talks</strong> is a curated speaker series where accomplished individuals from diverse backgrounds
+                share their life journeys, challenges, failures, breakthroughs, and lessons learned.
+              </p>
+            </div>
+
+            <div class="mt-3">
+              <p class="mb-2">What you can expect:</p>
+              <ul class="mb-0">
+                <li>Real stories, real setbacks, real takeaways</li>
+                <li>Career guidance and perspective-building</li>
+                <li>Interactive Q&amp;A with the speaker</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </section><!-- End Talks Section -->
+    </section><!-- End Focus Talks Intro -->
+
+    <!-- ======= Chapter -1 ======= -->
+    <section class="features">
+      <div class="container">
+        <div class="section-title">
+          <h2>Chapter -1</h2>
+          <p>The first edition of KL Talks.</p>
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-lg-7">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <i class="bi bi-mic"></i>
+              <h4>Event Overview</h4>
+              <p class="mb-2">
+                A candid conversation on growth, resilience, and the decisions that shape a career — with practical lessons students can apply.
+              </p>
+              <ul class="mb-0">
+                <li><strong>Theme:</strong> Life journey &amp; lessons learned</li>
+                <li><strong>Date:</strong> <span class="text-muted">(add date)</span></li>
+                <li><strong>Venue:</strong> <span class="text-muted">(add venue)</span></li>
+              </ul>
+            </div>
+
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <i class="bi bi-lightbulb"></i>
+              <h4>Key Highlights</h4>
+              <p class="mb-0">
+                Failures that became turning points, habits that compound over time, and a roadmap for staying consistent when motivation fades.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="card h-100" data-aos="fade-up" data-aos-delay="150">
+              <img src="assets/img/prof.jpg" class="card-img-top" alt="Chief Guest">
+              <div class="card-body">
+                <h5 class="card-title mb-1">Chief Guest</h5>
+                <p class="card-text mb-2">
+                  <strong><span class="text-muted">(Add chief guest name)</span></strong><br>
+                  <span class="text-muted">(Add designation / organization)</span>
+                </p>
+                <p class="card-text mb-0">
+                  <span class="text-muted">Add a 2–3 line bio/intro about the chief guest here.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Chapter -1 -->
+
+    <!-- ======= Chapter -1 Photos ======= -->
+    <section class="portfolio">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Chapter -1 Gallery</h2>
+          <p>A few moments from the session.</p>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+          <div class="col-lg-4 col-md-6 portfolio-wrap">
+            <div class="portfolio-item">
+              <a href="assets/img/techtalks.jpeg" data-gallery="talksGallery" class="portfolio-lightbox">
+                <img src="assets/img/techtalks.jpeg" class="img-fluid" alt="KL Talks Chapter -1 photo 1">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-wrap">
+            <div class="portfolio-item">
+              <a href="assets/img/cybersecconf.jpeg" data-gallery="talksGallery" class="portfolio-lightbox">
+                <img src="assets/img/cybersecconf.jpeg" class="img-fluid" alt="KL Talks Chapter -1 photo 2">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-wrap">
+            <div class="portfolio-item">
+              <a href="assets/img/futureofalgo.jpeg" data-gallery="talksGallery" class="portfolio-lightbox">
+                <img src="assets/img/futureofalgo.jpeg" class="img-fluid" alt="KL Talks Chapter -1 photo 3">
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <p class="small mb-0">
+            Replace the gallery image paths with your Chapter -1 event photos (recommended folder: <strong>assets/img/portfolio/</strong>).
+          </p>
+        </div>
+      </div>
+    </section><!-- End Chapter -1 Photos -->
 
   </main><!-- End #main -->
 
