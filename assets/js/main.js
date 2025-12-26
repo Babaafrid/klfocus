@@ -363,6 +363,16 @@
       el.classList.add('glow-card', 'tilt');
     }));
 
+    // Glass surfaces (premium look) for common components
+    const glassify = [
+      '.services .icon-box', '.why-us .icon-box', '.pricing .box',
+      '.blog .entry', '.contact .info-box',
+      '.portfolio-details .portfolio-info', '.portfolio-details .portfolio-description'
+    ];
+    glassify.forEach(sel => select(sel, true).forEach(el => {
+      el.classList.add('glass-surface');
+    }));
+
     // Team cards: glow only on card; tilt only the image container to avoid layout conflicts
     select('.team .member', true).forEach(el => el.classList.add('glow-card'));
     select('.team .member .member-img', true).forEach(el => el.classList.add('tilt'));

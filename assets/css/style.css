@@ -2608,9 +2608,53 @@ section {
 
 /* Utility: glass panel */
 .glass {
-  background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.18);
+  background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.06));
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  border-radius: 16px;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.glow-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Premium focus rings (keyboard only) */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--link-hover);
+  outline-offset: 3px;
+}
+
+/* Premium image hover (subtle) */
+.portfolio .portfolio-wrap img,
+.team .member .member-img img,
+.blog .entry .entry-img img {
+  transition: transform .55s ease, filter .55s ease;
+  will-change: transform;
+}
+.portfolio .portfolio-wrap:hover img,
+.team .member:hover .member-img img,
+.blog .entry:hover .entry-img img {
+  transform: scale(1.06);
+  filter: saturate(1.08) contrast(1.02);
+}
+
+/* Respect reduced motion while keeping layout intact */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* CTA buttons glow */
