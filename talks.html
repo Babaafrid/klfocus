@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Talks - FOCUS</title>
+  <meta content="Talks and speaker sessions by FOCUS at KL University." name="description">
+  <meta content="talks, seminars, speakers, focus, kl university" name="keywords">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Early theme apply to prevent flash of wrong theme -->
+  <script>
+    (function(){
+      try {
+        var m = localStorage.getItem('theme');
+        if(m === 'dark') { document.documentElement.classList.add('theme-dark'); }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    /* Talks page hero tweaks (uses existing template colors/styles) */
+    #hero-no-slider {
+      height: 70vh;
+      min-height: 520px;
+    }
+
+    #hero-no-slider::before {
+      background: linear-gradient(to right, rgba(30, 67, 86, 0.8), rgba(30, 67, 86, 0.6)), url("assets/img/TALKS/DSC03378.jpg") center top no-repeat;
+      background-size: cover;
+    }
+
+    .kltalks-hero-logo {
+      max-height: 160px;
+      width: auto;
+    }
+
+    /* Ensure transparent/dark logos remain visible in dark mode */
+    .kltalks-logo-surface {
+      background: rgba(255, 255, 255, 0.92);
+      padding: 14px 16px;
+      border-radius: 18px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+      display: inline-block;
+    }
+    .theme-dark .kltalks-logo-surface {
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    .kltalks-float {
+      animation: kltalksFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes kltalksFloat {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .kltalks-float {
+        animation: none;
+      }
+    }
+
+    /* Chapter-1: larger padding + glass look (scoped to this page) */
+    .talks-chapter .icon-box {
+      padding: 36px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+      border-radius: 16px;
+    }
+    .talks-chapter .icon-box > i {
+      font-size: 28px;
+      color: #68A4C4;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .talks-chapter .card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .talks-chapter .card .card-body {
+      padding: 28px;
+    }
+
+    .theme-dark .talks-chapter .card-body,
+    .theme-dark .talks-chapter .card-body .card-title,
+    .theme-dark .talks-chapter .card-body .card-text,
+    .theme-dark .talks-chapter .card-body p {
+      color: var(--text) !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center ">
+    <div class="container d-flex justify-content-between align-items-center">
+
+      <div class="logo">
+        <a href="home.html"><img src="assets/img/logo.png" alt="FOCUS" class="img-fluid"></a>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="" href="home.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="clubs.html">Technology Clubs</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="include.html">#Include</a></li>
+          <li><a class="active" href="talks.html">Talks</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Hero (Animated) ======= -->
+    <section id="hero-no-slider" class="d-flex justify-content-center align-items-center">
+      <div class="container position-relative" style="z-index: 2;">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="d-flex flex-column align-items-center">
+              <img
+                src="assets/img/TALKS/v2grw.png"
+                class="kltalks-hero-logo kltalks-logo-surface kltalks-float animate__animated animate__zoomIn"
+                alt="KL Talks"
+              >
+
+              <h2 class="mt-4 animate__animated animate__fadeInDown">KL Talks</h2>
+              <p class="mt-2 animate__animated animate__fadeInUp">
+                Focus Talks is a curated speaker series where accomplished individuals share their life journeys,
+                challenges, failures, breakthroughs, and lessons learned.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Hero -->
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Talks</h2>
+          <ol>
+            <li><a href="home.html">Home</a></li>
+            <li>Talks</li>
+          </ol>
+        </div>
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Focus Talks Intro ======= -->
+    <section class="services">
+      <div class="container">
+        <div class="row align-items-center gy-4">
+          <div class="col-lg-7">
+            <div class="section-title text-start p-0">
+              <h2>About Focus Talks</h2>
+              <p>
+                <strong>Focus Talks</strong> is a curated speaker series where accomplished individuals from diverse backgrounds
+                share their life journeys, challenges, failures, breakthroughs, and lessons learned.
+              </p>
+            </div>
+
+            <div class="row gy-3 mt-2">
+              <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-person-lines-fill me-3 fs-4"></i>
+                  <div>
+                    <h6 class="mb-1">Life Journeys</h6>
+                    <p class="mb-0 text-muted small">Stories shaped by setbacks, choices, and growth.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-graph-up-arrow me-3 fs-4"></i>
+                  <div>
+                    <h6 class="mb-1">Practical Insights</h6>
+                    <p class="mb-0 text-muted small">Real-world lessons you can apply immediately.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-compass me-3 fs-4"></i>
+                  <div>
+                    <h6 class="mb-1">Decision-Making</h6>
+                    <p class="mb-0 text-muted small">How to think clearly through uncertainty.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-chat-dots me-3 fs-4"></i>
+                  <div>
+                    <h6 class="mb-1">Interactive Q&amp;A</h6>
+                    <p class="mb-0 text-muted small">Ask questions and learn directly from the speaker.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <p class="mb-2">What you can expect:</p>
+              <ul class="mb-0">
+                <li>Real stories, real setbacks, real takeaways</li>
+                <li>Career guidance and perspective-building</li>
+                <li>Interactive Q&amp;A with the speaker</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <a href="assets/img/TALKS/v2grw.png" class="portfolio-lightbox" data-gallery="talksIntro">
+              <img src="assets/img/TALKS/v2grw.png" class="img-fluid rounded kltalks-logo-surface" alt="KL Talks Logo">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Focus Talks Intro -->
+
+    <!-- ======= Chapter -1 ======= -->
+    <section class="features talks-chapter">
+      <div class="container">
+        <div class="section-title">
+          <h2>Chapter -1</h2>
+          <p>The first edition of KL Talks.</p>
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-lg-7">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <i class="bi bi-mic"></i>
+              <h4>Event Overview</h4>
+              <p class="mb-2">
+                Syed Sohel shared insights drawn from his personal and professional life journey. The session focused on real-world experiences,
+                challenges, decision-making, and the lessons learned through practical exposure.
+              </p>
+              <ul class="mb-0">
+                <li><strong>Theme:</strong> Life journey &amp; lessons learned</li>
+                <li><strong>Date:</strong> <span class="text-muted">(add date)</span></li>
+                <li><strong>Venue:</strong> <span class="text-muted">(add venue)</span></li>
+              </ul>
+            </div>
+
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <i class="bi bi-lightbulb"></i>
+              <h4>Key Highlights</h4>
+              <p class="mb-0">
+                Practical lessons from the field, how to make better decisions under uncertainty, and how consistency helps push through setbacks.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="card h-100" data-aos="fade-up" data-aos-delay="150">
+              <img src="assets/img/TALKS/sohil.jpg" class="card-img-top" alt="Syed Sohel">
+              <div class="card-body">
+                <h5 class="card-title mb-1">Chief Guest</h5>
+                <p class="card-text mb-2">
+                  <strong>Syed Sohel</strong><br>
+                  Actor, Businessman
+                </p>
+                <p class="card-text mb-0">
+                  He shared his insights drawn from his personal and professional life journey, focusing on real-world experiences,
+                  challenges, decision-making, and lessons learned through practical exposure.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Chapter -1 -->
+
+    <!-- ======= Chapter -1 Photos ======= -->
+    <section class="portfolio">
+      <div class="container">
+        <div class="section-title">
+          <h2>Chapter -1 Gallery</h2>
+          <p>A few moments from the session.</p>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+          <div class="col-lg-4 col-md-6 portfolio-wrap">
+            <div class="portfolio-item">
+              <a href="assets/img/TALKS/DSC03343.jpg" data-gallery="talksGallery" class="portfolio-lightbox">
+                <img src="assets/img/TALKS/DSC03343.jpg" class="img-fluid" alt="KL Talks Chapter -1 photo 1">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-wrap">
+            <div class="portfolio-item">
+              <a href="assets/img/TALKS/DSC03247.jpg" data-gallery="talksGallery" class="portfolio-lightbox">
+                <img src="assets/img/TALKS/DSC03247.jpg" class="img-fluid" alt="KL Talks Chapter -1 photo 2">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-wrap">
+            <div class="portfolio-item">
+              <a href="assets/img/TALKS/DSC03378.jpg" data-gallery="talksGallery" class="portfolio-lightbox">
+                <img src="assets/img/TALKS/DSC03378.jpg" class="img-fluid" alt="KL Talks Chapter -1 photo 3">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-wrap">
+            <div class="portfolio-item">
+              <a href="assets/img/TALKS/DSC03240.jpg" data-gallery="talksGallery" class="portfolio-lightbox">
+                <img src="assets/img/TALKS/DSC03240.jpg" class="img-fluid" alt="KL Talks Chapter -1 photo 4">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-wrap">
+            <div class="portfolio-item">
+              <a href="assets/img/TALKS/DSC03268.jpg" data-gallery="talksGallery" class="portfolio-lightbox">
+                <img src="assets/img/TALKS/DSC03268.jpg" class="img-fluid" alt="KL Talks Chapter -1 photo 5">
+              </a>
+            </div>
+          </div>
+        </div>
+
+      
+      </div>
+    </section><!-- End Chapter -1 Photos -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="home.html">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="about.html">About</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="events.html">Events</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="clubs.html">Technology Clubs</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="team.html">Team</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="include.html">#Include</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="talks.html">Talks</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Contact Us</h4>
+            <p>
+              KL University, Vijayawada, 522302 <br>
+              India <br><br>
+              <strong>Email:</strong> focus@kluniversity.in<br>
+            </p>
+          </div>
+
+          <div class="col-lg-6 col-md-6 footer-info">
+            <h3>About FOCUS</h3>
+            <p>FOCUS is a platform for university CSE students to address grievances and promote academic growth. It aims to empower students with skills necessary for the evolving global tech landscape, fostering teamwork and knowledge exchange.</p>
+            <div class="social-links mt-3">
+              <a href="https://www.instagram.com/kl_focus/" class="instagram" target="_blank" rel="noopener"><i class="bx bxl-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/klfocus/mycompany/" class="linkedin" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>FOCUS</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <button id="themeToggle" class="theme-toggle-fab" type="button" title="Toggle theme" aria-label="Toggle theme">
+    <i class="bi bi-moon-stars theme-toggle-icon" aria-hidden="true"></i>
+    <span class="visually-hidden">Toggle theme</span>
+  </button>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
