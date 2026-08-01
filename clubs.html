@@ -9,6 +9,10 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
 
@@ -19,10 +23,84 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Early theme apply to prevent flash of wrong theme -->
+  <script>
+    (function(){
+      try {
+        var m = localStorage.getItem('theme');
+        if(m === 'dark') { document.documentElement.classList.add('theme-dark'); }
+      } catch(e) {}
+    })();
+  </script>
+
   <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- Clubs page critical styles (inline for deployment robustness) -->
+  <style>
+    /* Clubs circular cards */
+    .portfolio .portfolio-item.club-card {
+      background: transparent;
+      box-shadow: none;
+      min-height: auto;
+      padding: 16px 6px;
+    }
+    .portfolio .portfolio-item.club-card a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .club-img-wrap {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      position: relative;
+      z-index: 0;
+    }
+    .club-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+    }
+    .club-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      letter-spacing: .02em;
+      color: var(--text);
+    }
+    .theme-dark .club-name { color: var(--text); }
+
+    /* Electric animated ring around circular image */
+    .club-img-wrap.electric::before {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--primary), var(--primary-2), var(--primary));
+      filter: blur(8px);
+      opacity: .5;
+      z-index: 0;
+      animation: clubSpin 6s linear infinite;
+    }
+    .club-img-wrap.electric::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      padding: 2px;
+      background: linear-gradient(0deg, rgba(255,255,255,.8), rgba(255,255,255,.2));
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0);
+      mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0);
+      opacity: .35;
+    }
+    @keyframes clubSpin { to { transform: rotate(360deg); } }
+  </style>
 </head>
 
-<body>
+<body class="page-clubs">
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center ">
@@ -38,10 +116,12 @@
           <li><a class="" href="home.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="events.html">Events</a></li>
-          <li><a class="active" href="clubs.html">Technology Clubs</a></li>
+          <li><a class='active' href="clubs.html">Technology Clubs</a></li>
           <li><a href="team.html">Team</a></li>
           <li><a href="include.html">#Include</a></li>
+          <li><a href="talks.html">Talks</a></li>
           <li><a href="contact.html">Contact Us</a></li>
+          
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -85,97 +165,129 @@
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-app">
             <div class="portfolio-item">
-              <a href="aprameya.html"><img src="assets/img/portfolio/aprameya.jpg" class="img-fluid" alt=""></a>
+              <a href="aprameya.html" aria-label="Open Aprameya club" title="Aprameya">
+                <img src="assets/img/portfolio/aprameya.jpg" class="img-fluid" alt="Aprameya">
+              </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
             <div class="portfolio-item">
-              <a href="broadband.html"><img src="assets/img/portfolio/broadband.jpg" class="img-fluid" alt=""></a>
+              <a href="broadband.html" aria-label="Open Broadband Networks club" title="Broadband Networks">
+                <img src="assets/img/portfolio/broadband.jpg" class="img-fluid" alt="Broadband Networks">
+              </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
             <div class="portfolio-item">
-              <a href="dc.html"><img src="assets/img/portfolio/dc.jpg" class="img-fluid" alt=""></a>
+              <a href="dc.html" aria-label="Open Design Circle club" title="Design Circle">
+                <img src="assets/img/portfolio/dc.jpg" class="img-fluid" alt="Design Circle">
+              </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
             <div class="portfolio-item">
-              <a href="expedite.html"><img src="assets/img/portfolio/expedite.jpg" class="img-fluid" alt=""></a>
+              <a href="expedite.html" aria-label="Open Expedite club" title="Expedite">
+                <img src="assets/img/portfolio/expedite.jpg" class="img-fluid" alt="Expedite">
+              </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
             <div class="portfolio-item">
-              <a href="Garuda.html"><img src="assets/img/portfolio/garuda.jpg" class="img-fluid" alt=""></a>
+              <a href="Garuda.html" aria-label="Open Garuda club" title="Garuda">
+                <img src="assets/img/portfolio/garuda.jpg" class="img-fluid" alt="Garuda">
+              </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
             <div class="portfolio-item">
-              <a href="gdsc.html"><img src="assets/img/portfolio/gdg.jpg" class="img-fluid" alt=""></a>
+              <a href="gdsc.html" aria-label="Open Google Developer Groups club" title="GDSC">
+                <img src="assets/img/portfolio/gdg.jpg" class="img-fluid" alt="GDSC">
+              </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
             <div class="portfolio-item">
-              <a href="intel.html"><img src="assets/img/portfolio/intel.jpg" class="img-fluid" alt=""></a>
+              <a href="intel.html" aria-label="Open Intel Innovation club" title="Intel Innovation Club">
+                <img src="assets/img/portfolio/intel.jpg" class="img-fluid" alt="Intel Innovation Club">
+              </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
             <div class="portfolio-item">
-              <a href="kognitiv.html"><img src="assets/img/portfolio/kognitiv.jpg" class="img-fluid" alt=""></a>
+              <a href="kognitiv.html" aria-label="Open Kognitiv club" title="Kognitiv">
+                <img src="assets/img/portfolio/kognitiv.jpg" class="img-fluid" alt="Kognitiv">
+              </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
             <div class="portfolio-item">
-              <a href="mayavi.html"><img src="assets/img/portfolio/mayavi.jpg" class="img-fluid" alt=""></a>
+              <a href="mayavi.html" aria-label="Open Mayavi club" title="Mayavi">
+                <img src="assets/img/portfolio/mayavi.jpg" class="img-fluid" alt="Mayavi">
+              </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
             <div class="portfolio-item">
-              <a href="megha.html"><img src="assets/img/portfolio/megha.jpg" class="img-fluid" alt=""></a>
+              <a href="megha.html" aria-label="Open Megha club" title="Megha">
+                <img src="assets/img/portfolio/megha.jpg" class="img-fluid" alt="Megha">
+              </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
             <div class="portfolio-item">
-              <a href="rpa.html"><img src="assets/img/portfolio/rpa.jpg" class="img-fluid" alt=""></a>
+              <a href="rpa.html" aria-label="Open RPA club" title="RPA">
+                <img src="assets/img/portfolio/rpa.jpg" class="img-fluid" alt="RPA">
+              </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
             <div class="portfolio-item">
-              <a href="sea.html"><img src="assets/img/portfolio/sea.jpg" class="img-fluid" alt=""></a>
+              <a href="sea.html" aria-label="Open SEA club" title="SEA">
+                <img src="assets/img/portfolio/sea.jpg" class="img-fluid" alt="SEA">
+              </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
             <div class="portfolio-item">
-              <a href="socc.html"><img src="assets/img/portfolio/socc.jpg" class="img-fluid" alt=""></a>
+              <a href="socc.html" aria-label="Open SOCC club" title="SOCC">
+                <img src="assets/img/portfolio/socc.jpg" class="img-fluid" alt="SOCC">
+              </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
             <div class="portfolio-item">
-              <a href="sods.html"><img src="assets/img/portfolio/sods.jpg" class="img-fluid" alt=""></a>
+              <a href="sods.html" aria-label="Open SODS club" title="SODS">
+                <img src="assets/img/portfolio/sods.jpg" class="img-fluid" alt="SODS">
+              </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
             <div class="portfolio-item">
-              <a href="trailblazers.html"><img src="assets/img/portfolio/Trialblazers.jpg" class="img-fluid" alt=""></a>
+              <a href="trailblazers.html" aria-label="Open Trailblazers club" title="Trailblazers">
+                <img src="assets/img/portfolio/Trialblazers.jpg" class="img-fluid" alt="Trailblazers">
+              </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 portfolio-wrap filter-web">
             <div class="portfolio-item">
-              <a href="whitehathackers.html"><img src="assets/img/portfolio/whitehat.jpg" class="img-fluid" alt=""></a>
+              <a href="whitehathackers.html" aria-label="Open White Hat Hackers club" title="White Hat Hackers">
+                <img src="assets/img/portfolio/whitehat.jpg" class="img-fluid" alt="White Hat Hackers">
+              </a>
             </div>
           </div>
 
@@ -230,6 +342,10 @@
       </div>
     </footer><!-- End Footer -->
 
+  <button id="themeToggle" class="theme-toggle-fab" type="button" title="Toggle theme" aria-label="Toggle theme">
+    <i class="bi bi-moon-stars theme-toggle-icon" aria-hidden="true"></i>
+    <span class="visually-hidden">Toggle theme</span>
+  </button>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->

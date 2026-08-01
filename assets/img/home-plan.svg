@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#0f1521"/>
+      <stop offset="0.45" stop-color="#2c5f7a"/>
+      <stop offset="1" stop-color="#45beff"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="18%" cy="78%" r="65%">
+      <stop offset="0" stop-color="#68A4C4" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#68A4C4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="80%" cy="20%" r="60%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <linearGradient id="path" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.06"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bg)"/>
+
+  <!-- Soft glows -->
+  <circle cx="260" cy="620" r="360" fill="url(#glow1)" filter="url(#soft)"/>
+  <circle cx="960" cy="220" r="340" fill="url(#glow2)" filter="url(#soft)"/>
+
+  <!-- Roadmap / path motif -->
+  <path d="M120,660 C260,520 300,720 470,600 C650,470 620,380 760,320 C910,255 960,420 1080,300"
+        fill="none" stroke="url(#path)" stroke-width="14" stroke-linecap="round"/>
+
+  <!-- Nodes -->
+  <g>
+    <circle cx="120" cy="660" r="18" fill="#ffffff" fill-opacity="0.28" stroke="#ffffff" stroke-opacity="0.22"/>
+    <circle cx="470" cy="600" r="18" fill="#ffffff" fill-opacity="0.28" stroke="#ffffff" stroke-opacity="0.22"/>
+    <circle cx="760" cy="320" r="18" fill="#ffffff" fill-opacity="0.28" stroke="#ffffff" stroke-opacity="0.22"/>
+    <circle cx="1080" cy="300" r="18" fill="#ffffff" fill-opacity="0.28" stroke="#ffffff" stroke-opacity="0.22"/>
+
+    <circle cx="120" cy="660" r="6" fill="#45beff" fill-opacity="0.9"/>
+    <circle cx="470" cy="600" r="6" fill="#45beff" fill-opacity="0.9"/>
+    <circle cx="760" cy="320" r="6" fill="#45beff" fill-opacity="0.9"/>
+    <circle cx="1080" cy="300" r="6" fill="#45beff" fill-opacity="0.9"/>
+  </g>
+
+  <!-- Subtle diagonal texture -->
+  <g stroke="#ffffff" stroke-opacity="0.06" stroke-width="2">
+    <path d="M-100,120 L260, -40"/>
+    <path d="M-80,220 L340, -20"/>
+    <path d="M-60,320 L420, 0"/>
+    <path d="M-40,420 L500, 20"/>
+    <path d="M-20,520 L580, 40"/>
+    <path d="M0,620 L660, 60"/>
+    <path d="M20,720 L740, 80"/>
+    <path d="M40,820 L820, 100"/>
+  </g>
+</svg>
